@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28124.53
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YNAET", "YNAET\YNAET.csproj", "{EC4C22E6-9162-4E46-843E-557558975BEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC4C22E6-9162-4E46-843E-557558975BEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC4C22E6-9162-4E46-843E-557558975BEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC4C22E6-9162-4E46-843E-557558975BEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC4C22E6-9162-4E46-843E-557558975BEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {100F7656-10CD-475E-BD06-08DD395A2B14}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,119 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <img width="400" alt="Show Me The Money!" src="./assets/AngularMoney.jpeg">
+
+<ul>
+  <li *ngFor="let exp of expenses"
+    (click)="expense = exp"
+    [ngClass]="{selected: exp === expense}">
+    {{exp.memo}}
+  </li>
+</ul>
+
+<label><input type="checkbox" [(ngModel)]="hideExpense"/>Hide expense</label>
+
+<div [hidden]="hideExpense">
+  <h3>Expense:</h3>
+  <fieldset>
+    <label>
+      Id:
+      <input [(ngModel)]="expense.id" placeholder="id">
+    </label>
+  </fieldset>
+  <fieldset>
+    <label>
+      Amount:
+      <input [(ngModel)]="expense.amount" placeholder="amount">
+    </label>
+  </fieldset>
+  <fieldset>
+    <label>
+      City:
+      <input [(ngModel)]="expense.payee" placeholder="Payee">
+    </label>
+  </fieldset>
+  <fieldset>
+    <label>
+      Date:
+      <input [(ngModel)]="expense.date" placeholder="Date">
+    </label>
+  </fieldset>
+  <fieldset>
+    <label>
+      Category:
+      <select [(ngModel)]="expense.category">
+        <option>Movies</option>
+        <option>Cell</option>
+        <option>Pokemon</option>
+        <option>Groceries</option>
+        <option>Mortgage</option>
+        <option>Jujitsu</option>
+        <option>Cable</option>
+        <option>Other</option>
+      </select>
+    </label>
+    <fieldset>
+      <label>
+        Repeat:
+        <select [(ngModel)]="expense.repeat">
+          <option>true</option>
+          <option>false</option>
+        </select>
+      </label>
+  </fieldset>
+  <fieldset>
+    <label>
+      Impulse:
+      <select [(ngModel)]="expense.impulse">
+        <option>true</option>
+        <option>false</option>
+      </select>
+    </label>
+</fieldset>
+account = ['Wachovia', 'Middleburg Bank', 'HSBC', 'First Interstate']
+
+<fieldset>
+  <label>
+    Color:
+    <select [(ngModel)]="expense.account">
+      <option>Wachovia</option>
+      <option>Middleburg Bank</option>
+      <option>HSBC</option>
+      <option>First Interstate</option>
+    </select>
+  </label>
+</fieldset>
+<fieldset>
+  <label>
+    Color:
+    <select [(ngModel)]="expense.colorCode">
+      <option>Grey</option>
+      <option>Black</option>
+      <option>Red</option>
+      <option>Orange</option>
+      <option>Yellow</option>
+      <option>Green</option>
+      <option>Blue</option>
+      <option>Purple</option>
+    </select>
+  </label>
+</fieldset>
+
+<br>
+<label><input type="checkbox" [(ngModel)]="showDetails"/>Show Details</label>
+<h2>Here are some links to help you start: </h2>
+<ul>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
+  </li>
+</ul>
+
