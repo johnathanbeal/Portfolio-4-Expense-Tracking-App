@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" assembly="Swinkaran.Nhbnt.Web" namespace="Swinkaran.Nhbnt.Web.Models">
+  <class name="Expense" table="Expenses" dynamic-update="true" >
+    <cache usage="read-write"/>
+    <id name="Id" column="Id" type="long">
+      <generator class="native" />
+    </id>
+
+    <property name="amount"  />
+    <property name="payee" />
+    <property name="category" />
+    <property name="account" />
+    <property name="date" />
+    <property name="repeat" />
+    <property name="memo" />
+    <property name="impulse" />
+    <property name="colorCode" />
+  </class>
+</hibernate-mapping>

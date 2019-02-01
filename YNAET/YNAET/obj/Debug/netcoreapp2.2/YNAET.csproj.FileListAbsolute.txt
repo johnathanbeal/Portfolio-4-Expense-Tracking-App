@@ -1,0 +1,17 @@
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.deps.json
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.runtimeconfig.json
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.runtimeconfig.dev.json
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.dll
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.csprojAssemblyReference.cache
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.csproj.CoreCompileInputs.cache
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.RazorAssemblyInfo.cache
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.RazorAssemblyInfo.cs
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.AssemblyInfoInputs.cache
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.AssemblyInfo.cs
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.TagHelpers.input.cache
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.TagHelpers.output.cache
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.RazorCoreGenerate.cache
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\Razor\Pages\Error.g.cshtml.cs
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\Razor\Pages\_ViewImports.g.cshtml.cs
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.RazorTargetAssemblyInfo.cache
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.RazorTargetAssemblyInfo.cs
