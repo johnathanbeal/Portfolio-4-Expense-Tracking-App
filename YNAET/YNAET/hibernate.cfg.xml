@@ -8,7 +8,7 @@
       NHibernate.Driver.NpgsqlDriver
     </property>
     <property name="connection.connection_string">
-      User ID=postgres;Password=postgres;Host=localhost;Port=5432;Database=Expenses;Pooling=true;
+      User ID=postgres;Password=postgres;Host=localhost;Port=5432;Database=Finances;Pooling=true;
     </property>
     <property name="dialect">
       NHibernate.Dialect.PostgreSQL83Dialect

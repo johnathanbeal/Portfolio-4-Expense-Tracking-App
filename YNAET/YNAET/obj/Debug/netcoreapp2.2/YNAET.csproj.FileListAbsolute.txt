@@ -2,7 +2,6 @@ C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.deps.js
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.runtimeconfig.json
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.runtimeconfig.dev.json
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.dll
-C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.csprojAssemblyReference.cache
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.csproj.CoreCompileInputs.cache
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.RazorAssemblyInfo.cache
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.RazorAssemblyInfo.cs
@@ -22,3 +21,5 @@ C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.Views.p
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.dll
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.pdb
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.csproj.CopyComplete
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\hibernate.cfg.xml
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.csprojAssemblyReference.cache

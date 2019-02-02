@@ -14,16 +14,21 @@ using ISession = NHibernate.ISession;
 namespace YNAET.Controllers
 {
     [Produces("application/json")]
-    [Route("api/[controller]")]
     public class ExpensesController : Controller
     {
+        private readonly INHibernateSession _nHibernateSession;
+
+        public ExpensesController(INHibernateSession nHibernateSession)
+        {
+            _nHibernateSession = nHibernateSession;
+        }
         //ViewBag Message goes here
 
         public ActionResult Index()
         {
             IList<Expense> expenses;
 
-            using (ISession session = NHibernateSession.OpenSession())
+            using (ISession session = _nHibernateSession.OpenSession())
             {
                 expenses = session.Query<Expense>().ToList();
             }
@@ -34,7 +39,7 @@ namespace YNAET.Controllers
         public ActionResult Details(int id)
         {
             Expense expense = new Expense();
-            using (ISession session = NHibernateSession.OpenSession())
+            using (ISession session = _nHibernateSession.OpenSession())
             {
                 expense = session.Query<Expense>().Where(b => b.id == id).FirstOrDefault();
             }
@@ -64,7 +69,7 @@ namespace YNAET.Controllers
                 expense.payee = collection["payee"].ToString();
                 expense.repeat = bool.Parse(collection["repeat"]);
 
-                using (ISession session = NHibernateSession.OpenSession())
+                using (ISession session = _nHibernateSession.OpenSession())
                 {
                     using (ITransaction transaction = session.BeginTransaction())
                     {
@@ -85,7 +90,7 @@ namespace YNAET.Controllers
         public ActionResult Edit(int id)
         {
             Expense expense = new Expense();
-            using (ISession session = NHibernateSession.OpenSession())
+            using (ISession session = _nHibernateSession.OpenSession())
             {
                 expense = session.Query<Expense>().Where(b => b.id == id).FirstOrDefault();
             }
@@ -114,7 +119,7 @@ namespace YNAET.Controllers
 
 
                 // TODO: Add insert logic here
-                using (ISession session = NHibernateSession.OpenSession())
+                using (ISession session = _nHibernateSession.OpenSession())
                 {
                     using (ITransaction transaction = session.BeginTransaction())
                     {
@@ -135,7 +140,7 @@ namespace YNAET.Controllers
         {
             // Delete the book
             Expense expense = new Expense();
-            using (ISession session = NHibernateSession.OpenSession())
+            using (ISession session = _nHibernateSession.OpenSession())
             {
                 expense = session.Query<Expense>().Where(b => b.id == id).FirstOrDefault();
             }
@@ -150,7 +155,7 @@ namespace YNAET.Controllers
             try
             {
                 // TODO: Add delete logic here
-                using (ISession session = NHibernateSession.OpenSession())
+                using (ISession session = _nHibernateSession.OpenSession())
                 {
                     Expense expense = session.Get<Expense>(id);
 
@@ -167,33 +172,6 @@ namespace YNAET.Controllers
                 return View();
             }
         }
-
-        // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
         
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using YNAET.Nibernate;
 
 namespace YNAET
 {
@@ -27,6 +28,8 @@ namespace YNAET
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddScoped<INHibernateSession, NHibernateSession>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
