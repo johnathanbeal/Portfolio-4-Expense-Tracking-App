@@ -5,6 +5,7 @@ using System;
 using YNAET.Nibernate;
 using ISession = NHibernate.ISession;
 using YNAET.Entities;
+using System.Threading.Tasks;
 
 namespace YNAET.Controllers
 {
@@ -51,8 +52,8 @@ namespace YNAET.Controllers
 
         }
 
-        [HttpPost("api/expense/create")]
-        public ActionResult Create([FromBody]Expense expense)
+        [HttpPost("api/expense")]
+        public ActionResult Post([FromBody]Expense expense) 
         {
             var addExpense2 = expense;
 
