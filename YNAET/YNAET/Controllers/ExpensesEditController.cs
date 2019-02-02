@@ -11,17 +11,31 @@ using ISession = NHibernate.ISession;
 
 namespace YNAET.Controllers
 {
-    public class ExpensesPostController : Controller
+
+    public class ExpensesEditController : Controller
     {
         private readonly INHibernateSession _inHibernateSession;
 
-        public ExpensesPostController(INHibernateSession inHibernateSession)
+        private ExpensesEditController(INHibernateSession inHibernateSession)
         {
             _inHibernateSession = inHibernateSession;
         }
 
-        [HttpPost("api/expenses/create")]
-        public ActionResult Create(FormCollection collection)
+        [HttpPut("api/expenses/edit/{id}")]
+        public ActionResult Edit(int id)
+        {
+            Expense expense = new Expense();
+            using (ISession session = _inHibernateSession.OpenSession())
+            {
+                expense = session.Query<Expense>().Where(b => b.id == id).FirstOrDefault();
+            }
+
+            ViewBag.SubmitAction = "Save";
+            return View(expense);
+        }
+
+        [HttpPost("api/expenses/edit/{id}/{ihavenoideawhatiamdoing}")]
+        public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
@@ -41,50 +55,16 @@ namespace YNAET.Controllers
                 {
                     using (ITransaction transaction = session.BeginTransaction())
                     {
-                        session.Save(expense);
+                        session.SaveOrUpdate(expense);
                         transaction.Commit();
                     }
                 }
                 return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch
             {
                 return View();
             }
-
-        }
-
-        [HttpPost("api/expense")]
-        public ActionResult Create([FromBody]Expense addExpense)
-        {
-            try
-            {
-                Expense expense = new Expense();
-                expense.account = addExpense.account;
-                expense.amount = addExpense.amount;
-                expense.category = addExpense.category;
-                expense.colorCode = addExpense.colorCode;
-                expense.date = addExpense.date;
-                expense.impulse = addExpense.impulse;
-                expense.memo = addExpense.memo;
-                expense.payee = addExpense.payee;
-                expense.repeat = addExpense.repeat;
-
-                using (ISession session = _inHibernateSession.OpenSession())
-                {
-                    using (ITransaction transaction = session.BeginTransaction())
-                    {
-                        session.Save(expense);
-                        transaction.Commit();
-                    }
-                }
-                return RedirectToAction("Index");
-            }
-            catch (Exception e)
-            {
-                return View();
-            }
-
         }
     }
 }

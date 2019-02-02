@@ -31,6 +31,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\ExpensesController.cs" />
+    <Compile Remove="Controllers\SampleDataController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -29,5 +29,18 @@ namespace YNAET.Controllers
             }
             return View(expenses);
         }
+
+        [HttpGet("api/expenses/{id}")]
+        public ActionResult Details(int id)
+        {
+            Expense expense = new Expense();
+            using (ISession session = _inHibernateSession.OpenSession())
+            {
+                expense = session.Query<Expense>().Where(b => b.id == id).FirstOrDefault();
+            }
+
+            return View(expense);
+        }
+        
     }
 }
