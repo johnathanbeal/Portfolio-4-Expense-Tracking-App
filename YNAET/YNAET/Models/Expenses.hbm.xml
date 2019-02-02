@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" assembly="Swinkaran.Nhbnt.Web" namespace="Swinkaran.Nhbnt.Web.Models">
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" assembly="YNAET" namespace="YNAET.Models">
   <class name="Expense" table="Expenses" dynamic-update="true" >
     <cache usage="read-write"/>
     <id name="id" column="id" type="long">
