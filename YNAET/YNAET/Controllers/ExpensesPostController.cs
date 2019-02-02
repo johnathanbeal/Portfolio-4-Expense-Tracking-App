@@ -2,12 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using YNAET.Models;
 using YNAET.Nibernate;
 using ISession = NHibernate.ISession;
+using YNAET.Entities;
 
 namespace YNAET.Controllers
 {
@@ -54,21 +51,23 @@ namespace YNAET.Controllers
 
         }
 
-        [HttpPost("api/expense")]
-        public ActionResult Create([FromBody]Expense addExpense)
+        [HttpPost("api/expense/create")]
+        public ActionResult Create([FromBody]Expense expense)
         {
+            var addExpense2 = expense;
+
             try
             {
-                Expense expense = new Expense();
-                expense.account = addExpense.account;
-                expense.amount = addExpense.amount;
-                expense.category = addExpense.category;
-                expense.colorCode = addExpense.colorCode;
-                expense.date = addExpense.date;
-                expense.impulse = addExpense.impulse;
-                expense.memo = addExpense.memo;
-                expense.payee = addExpense.payee;
-                expense.repeat = addExpense.repeat;
+                Expense expenseDB = new Expense();
+                expenseDB.account = expense.account;
+                expenseDB.amount = expense.amount;
+                expenseDB.category = expense.category;
+                expenseDB.colorCode = expense.colorCode;
+                expenseDB.date = expense.date;
+                expenseDB.impulse = expense.impulse;
+                expenseDB.memo = expense.memo;
+                expenseDB.payee = expense.payee;
+                expenseDB.repeat = expense.repeat;
 
                 using (ISession session = _inHibernateSession.OpenSession())
                 {

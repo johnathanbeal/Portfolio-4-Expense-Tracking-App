@@ -36,6 +36,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Mappings\Expenses.hbm.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Expenses.hbm.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

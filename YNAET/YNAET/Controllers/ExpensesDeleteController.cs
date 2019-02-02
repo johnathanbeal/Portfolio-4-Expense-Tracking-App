@@ -2,10 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using YNAET.Models;
+using YNAET.Entities;
 using YNAET.Nibernate;
 using ISession = NHibernate.ISession;
 

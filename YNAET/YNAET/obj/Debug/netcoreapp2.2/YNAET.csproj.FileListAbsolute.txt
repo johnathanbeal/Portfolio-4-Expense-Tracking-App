@@ -22,4 +22,3 @@ C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.dll
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.pdb
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.csproj.CopyComplete
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\hibernate.cfg.xml
-C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.csprojAssemblyReference.cache

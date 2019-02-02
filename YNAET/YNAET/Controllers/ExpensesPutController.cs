@@ -2,21 +2,19 @@
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using YNAET.Models;
+using YNAET.Entities;
 using YNAET.Nibernate;
 using ISession = NHibernate.ISession;
 
 namespace YNAET.Controllers
 {
 
-    public class ExpensesEditController : Controller
+    public class ExpensesPutController : Controller
     {
         private readonly INHibernateSession _inHibernateSession;
 
-        private ExpensesEditController(INHibernateSession inHibernateSession)
+        private ExpensesPutController(INHibernateSession inHibernateSession)
         {
             _inHibernateSession = inHibernateSession;
         }
@@ -34,7 +32,7 @@ namespace YNAET.Controllers
             return View(expense);
         }
 
-        [HttpPost("api/expenses/edit/{id}/{ihavenoideawhatiamdoing}")]
+        [HttpPut("api/expenses/edit/{id}/{ihavenoideawhatiamdoing}")]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try

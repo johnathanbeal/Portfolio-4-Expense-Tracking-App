@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NHibernate;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using YNAET.Models;
+using YNAET.Entities;
 using YNAET.Nibernate;
 
 namespace YNAET.Controllers
@@ -27,7 +25,7 @@ namespace YNAET.Controllers
             {
                 expenses = session.Query<Expense>().ToList();
             }
-            return View(expenses);
+            return new JsonResult(expenses);
         }
 
         [HttpGet("api/expenses/{id}")]

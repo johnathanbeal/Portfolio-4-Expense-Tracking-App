@@ -1,7 +1,7 @@
 ﻿using NHibernate;
 using NHibernate.Cfg;
 using ISession = NHibernate.ISession;
-using YNAET.Models;
+using YNAET.Entities;
 
 namespace YNAET.Nibernate
 {
