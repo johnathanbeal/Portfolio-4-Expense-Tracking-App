@@ -78,11 +78,11 @@ namespace YNAET.Controllers
                         transaction.Commit();
                     }
                 }
-                return RedirectToAction("Index");
+                return new JsonResult(expenseModel);
             }
             catch (Exception e)
             {
-                return View();
+                return new JsonResult(e);
             }
 
         }
