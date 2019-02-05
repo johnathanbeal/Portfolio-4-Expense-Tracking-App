@@ -19,11 +19,11 @@ namespace YNAET.Controllers
         [HttpGet("api/expenses")]
         public IActionResult Execute()
         {
-            IList<Expense> expenses;
+            IList<ExpenseModel> expenses;
 
             using (ISession session = _inHibernateSession.OpenSession())
             {
-                expenses = session.Query<Expense>().ToList();
+                expenses = session.Query<ExpenseModel>().ToList();
             }
             return new JsonResult(expenses);
         }
@@ -31,13 +31,13 @@ namespace YNAET.Controllers
         [HttpGet("api/expenses/{id}")]
         public ActionResult Details(int id)
         {
-            Expense expense = new Expense();
+            ExpenseModel expense = new ExpenseModel();
             using (ISession session = _inHibernateSession.OpenSession())
             {
-                expense = session.Query<Expense>().Where(b => b.id == id).FirstOrDefault();
+                expense = session.Query<ExpenseModel>().Where(b => b.Id == id).FirstOrDefault();
             }
 
-            return View(expense);
+            return new JsonResult(expense);
         }
         
     }
