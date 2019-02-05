@@ -19,10 +19,10 @@ namespace YNAET.Controllers
         public ActionResult Delete(int id)
         {
             // Delete the book
-            ExpenseModel expense = new ExpenseModel();
+            ExpenseEntity expense = new ExpenseEntity();
             using (ISession session = _inHibernateSession.OpenSession())
             {
-                expense = session.Query<ExpenseModel>().Where(b => b.Id == id).FirstOrDefault();
+                expense = session.Query<ExpenseEntity>().Where(b => b.Id == id).FirstOrDefault();
             }
             ViewBag.SubmitAction = "Confirm delete";
             return new JsonResult(expense);

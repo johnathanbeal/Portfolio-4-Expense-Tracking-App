@@ -15,7 +15,7 @@ namespace YNAET.Nibernate
         public ISession OpenSession()
         {
             var configuration = new Configuration();
-            configuration.AddAssembly(typeof(ExpenseModel).Assembly);
+            configuration.AddAssembly(typeof(ExpenseEntity).Assembly);
             configuration.Configure();
             ISessionFactory sessionFactory = configuration.BuildSessionFactory();
             return sessionFactory.OpenSession();

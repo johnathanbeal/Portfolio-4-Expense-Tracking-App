@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace YNAET.Entities
 {
-    public class ExpenseModel
+    public class ExpenseEntity
     {
         
         public virtual long Id { get; set; }

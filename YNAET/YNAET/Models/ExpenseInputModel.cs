@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace YNAET.Entities
+namespace YNAET.Models
 {
     public class ExpenseInputModel
     {

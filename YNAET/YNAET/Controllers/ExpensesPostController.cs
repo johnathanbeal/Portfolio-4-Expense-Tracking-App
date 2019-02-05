@@ -3,6 +3,7 @@ using NHibernate;
 using System;
 using YNAET.Nibernate;
 using ISession = NHibernate.ISession;
+using YNAET.Models;
 using YNAET.Entities;
 
 namespace YNAET.Controllers
@@ -21,26 +22,26 @@ namespace YNAET.Controllers
         {
             try
             {
-                var expenseModel = new ExpenseModel();
-                expenseModel.Account = expenseInputModel.Account;
-                expenseModel.Amount = expenseInputModel.Amount;
-                expenseModel.Category = expenseInputModel.Category;
-                expenseModel.ColorCode = expenseInputModel.ColorCode;
-                expenseModel.Date = expenseInputModel.Date;
-                expenseModel.Impulse = expenseInputModel.Impulse;
-                expenseModel.Memo = expenseInputModel.Memo;
-                expenseModel.Payee = expenseInputModel.Payee;
-                expenseModel.Repeat = expenseInputModel.Repeat;
+                var expenseEntity = new ExpenseEntity();
+                expenseEntity.Account = expenseInputModel.Account;
+                expenseEntity.Amount = expenseInputModel.Amount;
+                expenseEntity.Category = expenseInputModel.Category;
+                expenseEntity.ColorCode = expenseInputModel.ColorCode;
+                expenseEntity.Date = expenseInputModel.Date;
+                expenseEntity.Impulse = expenseInputModel.Impulse;
+                expenseEntity.Memo = expenseInputModel.Memo;
+                expenseEntity.Payee = expenseInputModel.Payee;
+                expenseEntity.Repeat = expenseInputModel.Repeat;
 
                 using (ISession session = _inHibernateSession.OpenSession())
                 {
                     using (ITransaction transaction = session.BeginTransaction())
                     {
-                        session.Save(expenseModel);
+                        session.Save(expenseEntity);
                         transaction.Commit();
                     }
                 }
-                return new JsonResult(expenseModel);
+                return new JsonResult(expenseEntity);
             }
             catch (Exception e)
             {

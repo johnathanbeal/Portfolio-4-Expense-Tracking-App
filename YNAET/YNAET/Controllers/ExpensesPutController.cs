@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using NHibernate;
 using System;
 using System.Linq;
+using YNAET.Models;
 using YNAET.Entities;
 using YNAET.Nibernate;
 using ISession = NHibernate.ISession;
@@ -19,65 +19,31 @@ namespace YNAET.Controllers
             _inHibernateSession = inHibernateSession;
         }
 
-        [HttpPut("api/expenses/edit/{id}")]
+        [HttpPut("api/expenses/{id}")]
         public ActionResult Edit(int id, [FromBody]ExpenseInputModel expenseInputModel)
         {
-            ExpenseModel expenseModel = new ExpenseModel();
             using (ISession session = _inHibernateSession.OpenSession())
             {
-                expenseModel = session.Query<ExpenseModel>().Where(b => b.Id == id).FirstOrDefault();
-                expenseModel.Account = expenseInputModel.Account ?? expenseModel.Account;
-                expenseModel.Category = expenseInputModel.Category ?? expenseModel.Category;
-                expenseModel.ColorCode = expenseInputModel.ColorCode ?? expenseModel.ColorCode;
-                expenseModel.Memo = expenseInputModel.Memo ?? expenseModel.Memo;
-                expenseModel.Payee = expenseInputModel.Payee ?? expenseModel.Payee;
-
-                if (expenseInputModel.Amount == 0)
+                var expenseEntity = session.Query<ExpenseEntity>().Where(b => b.Id == id).FirstOrDefault();
+                expenseEntity.Account = expenseInputModel.Account;
+                expenseEntity.Category = expenseInputModel.Category;
+                expenseEntity.ColorCode = expenseInputModel.ColorCode;
+                expenseEntity.Memo = expenseInputModel.Memo;
+                expenseEntity.Payee = expenseInputModel.Payee;
+                expenseEntity.Amount = expenseInputModel.Amount;               
+                expenseEntity.Date = expenseInputModel.Date;
+                expenseEntity.Impulse = expenseInputModel.Impulse;
+                expenseEntity.Repeat = expenseInputModel.Repeat;
+                expenseEntity.Repeat = expenseEntity.Repeat;
+                
+                using (ITransaction transaction = session.BeginTransaction())
                 {
-                    expenseModel.Amount = expenseModel.Amount;
-                }
-                else
-                {
-                    expenseModel.Amount = expenseInputModel.Amount;
-                }
-
-                if (expenseInputModel.Date == DateTime.MinValue)
-                {
-                    expenseModel.Date = expenseModel.Date;
-                }
-                else
-                {
-                    expenseModel.Date = expenseInputModel.Date;
-                }
-
-                try
-                { 
-                    expenseModel.Impulse = expenseInputModel.Impulse;
-                }
-                catch
-                {
-                    expenseModel.Impulse = expenseModel.Impulse;
-                }
-
-                try
-                {
-                    expenseModel.Repeat = expenseInputModel.Repeat;
-                }
-                catch
-                {
-                    expenseModel.Repeat = expenseModel.Repeat;
-                }
-               
-
-                using (ITransaction transaction = session.BeginTransaction())//DO I NEED THIS?
-                {
-                    session.SaveOrUpdate(expenseModel);//DO I NEED THIS?
-                    transaction.Commit();//DO I NEED THIS?
+                    session.SaveOrUpdate(expenseEntity);
+                    transaction.Commit();
                 }
             }
 
-            ViewBag.SubmitAction = "Save";// DO I NEED THIS?
-            return new JsonResult(expenseModel);
+            return new OkResult();
         }
     }
 }
