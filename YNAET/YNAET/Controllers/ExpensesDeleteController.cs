@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NHibernate;
 using System.Linq;
 using YNAET.Entities;
 using YNAET.Nibernate;
@@ -18,27 +19,24 @@ namespace YNAET.Controllers
         [HttpDelete("api/expenses/{id}")]
         public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            // Delete the book
             ExpenseEntity expense = new ExpenseEntity();
             using (ISession session = _inHibernateSession.OpenSession())
             {
-                expense = session.Query<ExpenseEntity>().Where(b => b.Id == id).FirstOrDefault();
+                expense = session.Query<ExpenseEntity>().
+                    Where(b => b.Id == id).FirstOrDefault();
                 if (expense == null)
                 {
                     return NotFound();
                 }
                 else
                 {
-                    session.Delete(expense)
-                  
+                    using (ITransaction transaction = session.BeginTransaction())
+                    {
+                        session.Delete(expense);
+                        transaction.Commit();
+                    }                      
                 }
             }
-
             return new OkResult();
         }
     }
