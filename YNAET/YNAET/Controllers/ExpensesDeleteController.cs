@@ -18,14 +18,28 @@ namespace YNAET.Controllers
         [HttpDelete("api/expenses/{id}")]
         public ActionResult Delete(int id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
             // Delete the book
             ExpenseEntity expense = new ExpenseEntity();
             using (ISession session = _inHibernateSession.OpenSession())
             {
                 expense = session.Query<ExpenseEntity>().Where(b => b.Id == id).FirstOrDefault();
+                if (expense == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    session.Delete(expense)
+                  
+                }
             }
-            ViewBag.SubmitAction = "Confirm delete";
-            return new JsonResult(expense);
+
+            return new OkResult();
         }
     }
 }
