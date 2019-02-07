@@ -36,11 +36,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\expenseCreation.service.ts" />
+    <None Remove="ClientApp\src\app\expenseDeletion.service.ts" />
+    <None Remove="ClientApp\src\app\expenseModification.Service.ts" />
+    <None Remove="ClientApp\src\app\ExpenseQuery.Service.ts" />
     <None Remove="Mappings\Expenses.hbm.xml" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Mappings\Expenses.hbm.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\expenseCreation.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\expenseDeletion.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\expenseModification.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\expenseQuery.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
