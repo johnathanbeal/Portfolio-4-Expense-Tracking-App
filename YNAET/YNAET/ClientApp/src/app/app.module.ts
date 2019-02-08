@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
-import { Observable, of, from } from 'rxjs';
+//import { Observable, of, from } from 'rxjs';
 import { ExpenseQueryService } from './ExpenseQuery.Service';
 
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    Observable
+    //Observable
+    HttpClientModule
     
   ],
   providers: [ExpenseQueryService],
