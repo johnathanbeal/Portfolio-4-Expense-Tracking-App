@@ -14,5 +14,5 @@ export class ExpenseQueryService {
   getAllExpenses(): Observable<Expense[]> {
     return this.http.get<Expense[]>('https://localhost:44354/api/expenses');
   }
-  
+
 }

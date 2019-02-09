@@ -1,7 +1,12 @@
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\hibernate.cfg.xml
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.deps.json
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.runtimeconfig.json
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.runtimeconfig.dev.json
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.dll
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.pdb
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.Views.dll
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.Views.pdb
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.csprojAssemblyReference.cache
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.csproj.CoreCompileInputs.cache
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.RazorAssemblyInfo.cache
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.RazorAssemblyInfo.cs
@@ -14,11 +19,7 @@ C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\Razor\Pages\E
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\Razor\Pages\_ViewImports.g.cshtml.cs
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.RazorTargetAssemblyInfo.cache
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.RazorTargetAssemblyInfo.cs
-C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.pdb
-C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.Views.dll
-C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.Views.pdb
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.Views.pdb
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.dll
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.pdb
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.csproj.CopyComplete
-C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\hibernate.cfg.xml

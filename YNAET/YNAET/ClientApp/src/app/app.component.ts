@@ -64,8 +64,9 @@ export class AppComponent implements OnInit{
 	 //   colorCode: 'Blue'
   //  },
   //];
-  expenses: Observable<Expense[]>;
+  expenses: Expense[];
   expense: Expense = new Expense();
+
 
   hideExpense = true;
 
@@ -79,6 +80,9 @@ export class AppComponent implements OnInit{
   constructor(private expenseQueryService: ExpenseQueryService) { }
 
   ngOnInit() {
-    this.expenses = this.expenseQueryService.getAllExpenses();
+    this.expenseQueryService.getAllExpenses()
+      .subscribe(xp => this.expenses = xp);
+        
   }
+  
 }
