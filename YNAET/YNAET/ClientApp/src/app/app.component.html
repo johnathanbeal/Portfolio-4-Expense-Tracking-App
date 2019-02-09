@@ -4,16 +4,16 @@
     Welcome to {{ title }}!
   </h1>
   <img width="250" alt="Show Me The Money!" src="./assets/AngularMoney.jpeg">
-<div class="receipts">
-<ul >
-  <h3>Receipts</h3>
-  <li *ngFor="let exp of expenses"
-    (click)="expense = exp"
-    [ngClass]="{selected: exp === expense}">
-    {{exp.memo}}
-  </li>
-</ul>
-</div>
+  <div class="receipts">
+    <h3>Receipts</h3>
+    <ul>
+      <li *ngFor="let exp of expenses"
+          (click)="expense = exp"
+          [ngClass]="{selected: exp === expense}">
+        {{exp.memo}}
+      </li>
+    </ul>
+  </div>
 
   <h3>Expense:</h3>
   <fieldset>
@@ -29,7 +29,14 @@
     </label>
   </fieldset>
   <label><input type="checkbox" [(ngModel)]="hideExpense"/>Hide Expense Details</label>
-
+  <br />
+    <!--<span><button (click)="delete(expense.id)">Delete Expense</button></span>-->
+    <span *ngIf="confirmDelete">
+      <span>Are you sure you want to Delete?</span>
+      <button class="btn btn-danger" (click)="deleteExpense(); confirmDelete=false; clearExpenses()">Yes</button>
+      <button class="btn btn-danger" (click)="confirmDelete=false">No</button>
+    </span>
+    <button *ngIf="!confirmDelete" class="btn btn-danger" (click)="confirmDelete=true">Delete</button>
 <div [hidden]="hideExpense">
     <fieldset>
         <label>

@@ -6,6 +6,7 @@ import { ExpenseQueryService } from './ExpenseQuery.Service';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ExpenseDeletionService } from './expenseDeletion.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
     
   ],
-  providers: [ExpenseQueryService],
+  providers: [ExpenseQueryService, ExpenseDeletionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

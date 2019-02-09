@@ -11,7 +11,7 @@ export interface ExpenseDeletor {
 export class ExpenseDeletionService {
   constructor(private http: HttpClient) { }
   
-  deleteExpense(expenseDeletor: ExpenseDeletor) {
-    return this.http.delete('http://localhost:8000/api/cats/' + expenseDeletor.id);
+  deleteExpense(id: number) {
+    return this.http.delete('https://localhost:44354/api/expenses/' + id);
   }
 }

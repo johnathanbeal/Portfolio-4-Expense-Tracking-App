@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Expense } from './model';
 import { ExpenseQueryService } from './ExpenseQuery.Service';
 import { Observable } from 'rxjs';
+import { ExpenseDeletionService } from './expenseDeletion.service';
 
 @Component({
   selector: 'app-root',
@@ -12,58 +13,7 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit{
   title = 'YNAET: You Need An Expense Tracker';
 
-  //expenses = this.expenseQuery.getAllExpenses();
 
-  //expenses: Expense[] = [
-  //  {
-  //    id: 1,
-	 //   amount: 70.00,
-	 //   payee: 'Alamo Drafthouse',
-	 //   category: 'Movies',
-	 //   account: 'Wachovia',
-	 //   date: '20190125',
-	 //   repeat: false,
-	 //   memo: 'Into the Spiderverse Tickets',
-	 //   impulse: true,
-	 //   colorCode: 'Red'
-  //  },
-  //  {
-  //    id: 2,
-	 //   amount: 10.00,
-	 //   payee: 'Pokemon Trainer Kit',
-	 //   category: 'Pokemon',
-	 //   account: 'Middleburg Bank',
-	 //   date: '20190126',
-	 //   repeat: false,
-	 //   memo: 'Sun and Moon Trainer Cards',
-	 //   impulse: true,
-	 //   colorCode: 'Orange'
-  //  },
-  //  {
-  //    id: 3,
-	 //   amount: 190.00,
-	 //   payee: 'Google Fi',
-	 //   category: 'Cell',
-	 //   account: 'HSBC',
-	 //   date: '20190127',
-	 //   repeat: true,
-	 //   memo: 'Into the Spiderverse Tickets',
-	 //   impulse: false,
-	 //   colorCode: 'Green'
-  //  },
-  //  {
-  //    id: 4,
-	 //   amount: 200.00,
-	 //   payee: 'Groceries',
-	 //   category: 'Groceries',
-	 //   account: 'First Interstate',
-	 //   date: '20190128',
-	 //   repeat: false,
-	 //   memo: 'Lidl',
-	 //   impulse: false,
-	 //   colorCode: 'Blue'
-  //  },
-  //];
   expenses: Expense[];
   expense: Expense = new Expense();
 
@@ -77,12 +27,33 @@ export class AppComponent implements OnInit{
 
   account = ['Wachovia', 'Middleburg Bank', 'HSBC', 'First Interstate']
 
-  constructor(private expenseQueryService: ExpenseQueryService) { }
+  constructor(private expenseQueryService: ExpenseQueryService, private expenseDeletionService: ExpenseDeletionService) { }
 
   ngOnInit() {
     this.expenseQueryService.getAllExpenses()
       .subscribe(xp => this.expenses = xp);
         
   }
-  
+
+  deleteExpense() {
+    this.expenseDeletionService.deleteExpense(this.expense.id).subscribe(
+      () => console.log('Expense with Id = {{this.expense}} deleted'),
+        (err) => console.log(err)
+    );
+    var index = this.expenses.indexOf(this.expense);
+    this.expenses.splice(index, 1);
+  }
+
+  clearExpenses() {
+    this.expense.amount = 0;
+    this.expense.payee = "";
+    this.expense.memo = "";
+    this.expense.category = "";
+    this.expense.account = "";
+    this.expense.date = "";
+    this.expense.repeat = null;
+    this.expense.impulse = null;
+    this.expense.colorCode = "";
+    this.expense.id = 0;
+  }
 }
