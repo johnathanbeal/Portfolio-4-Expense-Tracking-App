@@ -6,7 +6,6 @@ C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.dll
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.pdb
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.Views.dll
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\bin\Debug\netcoreapp2.2\YNAET.Views.pdb
-C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.csprojAssemblyReference.cache
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.csproj.CoreCompileInputs.cache
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.RazorAssemblyInfo.cache
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET\obj\Debug\netcoreapp2.2\YNAET.RazorAssemblyInfo.cs

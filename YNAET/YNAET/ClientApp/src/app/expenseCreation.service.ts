@@ -4,14 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import { Expense } from './model';
 
 export interface ExpenseCreator {
-  id: string;
+  expense: Expense;
 }
 
 @Injectable()
 export class ExpenseCreationService {
   constructor(private http: HttpClient) { }
   
-  insertExpense(expenseCreator: ExpenseCreator): Observable<Expense> {
-    return this.http.post<Expense>('http://localhost:44354/api/expenses/', expenseCreator.id);
+  insertExpense(expense: Expense): Observable<Expense> {
+    return this.http.post<Expense>('http://localhost:44354/api/expenses/', expense);
   }
 }

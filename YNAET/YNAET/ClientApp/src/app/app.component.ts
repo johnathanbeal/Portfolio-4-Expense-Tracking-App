@@ -3,6 +3,7 @@ import { Expense } from './model';
 import { ExpenseQueryService } from './ExpenseQuery.Service';
 import { Observable } from 'rxjs';
 import { ExpenseDeletionService } from './expenseDeletion.service';
+import { ExpenseCreationService } from './expenseCreation.service';
 
 @Component({
   selector: 'app-root',
@@ -25,14 +26,22 @@ export class AppComponent implements OnInit{
   /* Create an array of states that includes previous states PLUS Illinois */
   colorCode    = ['Grey', 'Black', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple'];
 
-  account = ['Wachovia', 'Middleburg Bank', 'HSBC', 'First Interstate']
+  account = ['Rebalance', 'Tax Return', 'Offering', 'Cell', 'Utilities',
+    'Mortgage', 'Groceries', 'Car Gas', 'Trips', 'Birthdays', 'Celebrations',
+    'Christmas', 'Kittens', 'Preschool', 'Car Expenses', 'EZ Pass', 'Subscriptions',
+    'Stuff I Forgot to Budget For', 'Auto Loan', 'Student Loan', 'Jujitsu/Krav Maga',
+  'Swimming', 'VA529', 'Training Fund', 'Sports Gym', 'Dining Out', 'Fund Money']
 
-  constructor(private expenseQueryService: ExpenseQueryService, private expenseDeletionService: ExpenseDeletionService) { }
+  constructor(private expenseQueryService: ExpenseQueryService, private expenseDeletionService: ExpenseDeletionService, private expenseCreationService: ExpenseCreationService) { }
 
   ngOnInit() {
     this.expenseQueryService.getAllExpenses()
       .subscribe(xp => this.expenses = xp);
         
+  }
+
+  createExpense(expense) {
+    this.expenseCreationService.insertExpense(expense).subscribe();
   }
 
   deleteExpense() {

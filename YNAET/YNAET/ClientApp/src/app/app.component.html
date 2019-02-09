@@ -4,6 +4,7 @@
     Welcome to {{ title }}!
   </h1>
   <img width="250" alt="Show Me The Money!" src="./assets/AngularMoney.jpeg">
+  <app-expense-documentor></app-expense-documentor>
   <div class="receipts">
     <h3>Receipts</h3>
     <ul>
@@ -14,7 +15,6 @@
       </li>
     </ul>
   </div>
-
   <h3>Expense:</h3>
   <fieldset>
     <label>
@@ -28,43 +28,35 @@
       <input [(ngModel)]="expense.payee" placeholder="Payee">
     </label>
   </fieldset>
-  <label><input type="checkbox" [(ngModel)]="hideExpense"/>Hide Expense Details</label>
+  <label><input type="checkbox" [(ngModel)]="hideExpense" />Hide Expense Details</label>
   <br />
-    <!--<span><button (click)="delete(expense.id)">Delete Expense</button></span>-->
-    <span *ngIf="confirmDelete">
-      <span>Are you sure you want to Delete?</span>
-      <button class="btn btn-danger" (click)="deleteExpense(); confirmDelete=false; clearExpenses()">Yes</button>
-      <button class="btn btn-danger" (click)="confirmDelete=false">No</button>
-    </span>
-    <button *ngIf="!confirmDelete" class="btn btn-danger" (click)="confirmDelete=true">Delete</button>
-<div [hidden]="hideExpense">
+  <!--<span><button (click)="delete(expense.id)">Delete Expense</button></span>-->
+  <span *ngIf="confirmDelete">
+    <span>Are you sure you want to Delete?</span>
+    <button class="btn btn-danger" (click)="deleteExpense(); confirmDelete=false; clearExpenses()">Yes</button>
+    <button class="btn btn-danger" (click)="confirmDelete=false">No</button>
+  </span>
+  <button *ngIf="!confirmDelete" class="btn btn-danger" (click)="confirmDelete=true">Delete</button>
+  <div [hidden]="hideExpense">
     <fieldset>
-        <label>
-          Id:
-          <input [(ngModel)]="expense.id" placeholder="id">
-        </label>
-      </fieldset>
-  <fieldset>
-    <label>
-      Date:
-      <input [(ngModel)]="expense.date" placeholder="Date">
-    </label>
-  </fieldset>
-  <fieldset>
-    <label>
-      Category:
-      <select [(ngModel)]="expense.category">
-        <option>Movies</option>
-        <option>Cell</option>
-        <option>Pokemon</option>
-        <option>Groceries</option>
-        <option>Mortgage</option>
-        <option>Jujitsu</option>
-        <option>Cable</option>
-        <option>Other</option>
-      </select>
-    </label>
-  </fieldset>
+      <label>
+        Id:
+        <input [(ngModel)]="expense.id" placeholder="id">
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Date:
+        <input [(ngModel)]="expense.date" placeholder="Date">
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Category:
+        <select [(ngModel)]="expense.category">
+        </select>
+      </label>
+    </fieldset>
     <fieldset>
       <label>
         Repeat:
@@ -73,53 +65,50 @@
           <option>false</option>
         </select>
       </label>
-  </fieldset>
-  <fieldset>
-    <label>
-      Impulse:
-      <select [(ngModel)]="expense.impulse">
-        <option>true</option>
-        <option>false</option>
-      </select>
-    </label>
-</fieldset>
-<fieldset>
-  <label>
-    Account: 
-      <select [(ngModel)]="expense.account">
-      <option>Wachovia</option>
-      <option>Middleburg Bank</option>
-      <option>HSBC</option>
-      <option>First Interstate</option>
-    </select>
-  </label>
-</fieldset>
-<fieldset>
-  <label>
-    Color:
-    <select [(ngModel)]="expense.colorCode">
-      <option>Grey</option>
-      <option>Black</option>
-      <option>Red</option>
-      <option>Orange</option>
-      <option>Yellow</option>
-      <option>Green</option>
-      <option>Blue</option>
-      <option>Purple</option>
-    </select>
-  </label>
-</fieldset>
-
-<h5>Here are some links to help you start: </h5>
-<ul>
-  <li>
-    <h6><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h6>
-  </li>
-  <li>
-    <h6><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h6>
-  </li>
-  <li>
-    <h6><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h6>
-  </li>
-</ul>
-
+    </fieldset>
+    <fieldset>
+      <label>
+        Impulse:
+        <select [(ngModel)]="expense.impulse">
+          <option>true</option>
+          <option>false</option>
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Account:
+        <select [(ngModel)]="expense.account">
+          <option>Wells Fargo</option>
+          <option>Middleburg Bank</option>
+          <option>Suntrust</option>
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Color:
+        <select [(ngModel)]="expense.colorCode">
+          <option>Grey</option>
+          <option>Black</option>
+          <option>Red</option>
+          <option>Orange</option>
+          <option>Yellow</option>
+          <option>Green</option>
+          <option>Blue</option>
+          <option>Purple</option>
+        </select>
+      </label>
+    </fieldset>
+    <h5>Here are some links to help you start: </h5>
+    <ul>
+      <li>
+        <h6><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h6>
+      </li>
+      <li>
+        <h6><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h6>
+      </li>
+      <li>
+        <h6><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h6>
+      </li>
+    </ul>
