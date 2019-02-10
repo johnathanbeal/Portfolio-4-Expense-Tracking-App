@@ -23,7 +23,6 @@ export class AppComponent implements OnInit{
 
   categories   = ['Movies', 'Pokemon', 'Groceries', 'Jujitsu', 'Mortgage', 'Cell', 'Cable', 'Other'];
 
-  /* Create an array of states that includes previous states PLUS Illinois */
   colorCode    = ['Grey', 'Black', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple'];
 
   account = ['Rebalance', 'Tax Return', 'Offering', 'Cell', 'Utilities',

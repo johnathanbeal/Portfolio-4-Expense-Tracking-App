@@ -1,51 +1,59 @@
+<form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
 <div style="text-align:left">
-  <div formGroupName="expense">
+  <div >
     <h3>New Expense</h3>
     <label>
       Amount:
-      <input type="text" formControlName="amount">
+      <input type="text" formControlName="amount" placeholder="amount">
     </label>
     <br />
     <label>
       Payee:
-      <input type="text" formControlName="payee">
+      <input type="text" formControlName="payee" placeholder="payee">
     </label>
     <br />
     <label>
       Date:
-      <input type="text" formControlName="date">
+      <input type="text" formControlName="date" placeholder="date">
+    </label>
+    <br />
+    <label>
+      Date:
+      <input type="text" formControlName="date" placeholder="date">
     </label>
     <br />
     <label>
       Category:
-      <input type="text" formControlName="category" align="left">
-    </label>
-    <br />
-    <label>
-      Date:
-      <input type="text" formControlName="date" align="left">
-    </label>
-    <br />
-    <label>
-      Repeat:
-      <input type="checkbox" formControlName="repeat" align="left">
-    </label>
-    <br />
-    <label>
-      Impulse:
-      <input type="checkbox" formControlName="impulse" align="left">
+      <select type="text" formControlName="category">
+        <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+      </select>
     </label>
     <br />
     <label>
       Account:
-      <input type="text" formControlName="account" align="left">
+      <select type="text" formControlName="account">
+        <option *ngFor="let account of accounts" [value]="account">{{account}}</option>
+      </select>
     </label>
     <br />
     <label>
       Color:
-      <input type="text" formControlName="color" align="left">
+      <select type="text" formControlName="colorCode">
+        <option *ngFor="let colorCode of colorCodes" [value]="colorCode">{{colorCode}}</option>
+      </select>
+    </label>
+    <br />
+    <label>
+      Repeat:
+      <input type="checkbox" class="checkbox-bool" formControlName="repeat" align="left">
+    </label>
+    <br />
+    <label>
+      Impulse:
+      <input type="checkbox" class="checkbox-bool" formControlName="impulse" align="left">
     </label>
     <br />
   </div>
   </div>
+  </form>
 

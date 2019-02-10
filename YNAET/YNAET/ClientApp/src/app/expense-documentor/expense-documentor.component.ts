@@ -9,25 +9,41 @@ import { FormBuilder } from '@angular/forms';
   templateUrl: './expense-documentor.component.html',
   styleUrls: ['./expense-documentor.component.css']
 })
+
+
+
 export class ExpenseDocumentorComponent implements OnInit {
 
-  expenseForm = new FormGroup ({
-    amount: new FormControl('amount'),
-    payee: new FormControl('payee'),
-    date: new FormControl('date'),
-    category: new FormControl('category'),
-    repeat: new FormControl('repeat'),
-    impulse: new FormControl('impulse'),
-    account: new FormControl('account'),
-    colorCode: new FormControl('color'),
-  });
+  expenseForm: FormGroup;
+
+  accounts = ['Suntrust', 'Middleburg', 'Wells Fargo'];
+
+  colorCodes = ['Grey', 'Black', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'Pink', 'Cornflower-Blue'];
+
+  categories = ['Rebalance', 'Tax Return', 'Offering', 'Cell', 'Utilities',
+    'Mortgage', 'Groceries', 'Car Gas', 'Trips', 'Birthdays', 'Celebrations',
+    'Christmas', 'Kittens', 'Preschool', 'Car Expenses', 'EZ Pass', 'Subscriptions',
+    'Stuff I Forgot to Budget For', 'Auto Loan', 'Student Loan', 'Jujitsu/Krav Maga',
+    'Swimming', 'VA529', 'Training Fund', 'Sports Gym', 'Dining Out', 'Fund Money']
 
   constructor() {
-    this.expense = new Expense();
+    this.expenseForm = this.createFormGroup();
   }
-  expense: Expense;
+
+  createFormGroup() {
+    return new FormGroup({
+      amount: new FormControl('amount'),
+      payee: new FormControl('payee'),
+      category: new FormControl('category'),
+      account: new FormControl('account'),
+      date: new FormControl('date'),
+      repeat: new FormControl('repeat'),
+      memo: new FormControl('memo'),
+      impulse: new FormControl('impulse'),
+      colorCode: new FormControl('color'),
+    });
+  }
 
   ngOnInit() {
   }
-
 }
