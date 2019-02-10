@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Expense } from '../model';
 import { FormBuilder } from '@angular/forms';
+import { ExpenseCreationService } from '../expenseCreation.service';
 
 
 @Component({
@@ -13,6 +14,8 @@ import { FormBuilder } from '@angular/forms';
 
 
 export class ExpenseDocumentorComponent implements OnInit {
+
+  newExpense: Expense;
 
   expenseForm: FormGroup;
 
@@ -26,24 +29,30 @@ export class ExpenseDocumentorComponent implements OnInit {
     'Stuff I Forgot to Budget For', 'Auto Loan', 'Student Loan', 'Jujitsu/Krav Maga',
     'Swimming', 'VA529', 'Training Fund', 'Sports Gym', 'Dining Out', 'Fund Money']
 
-  constructor() {
-    this.expenseForm = this.createFormGroup();
+  constructor(private fb: FormBuilder, private expenseCreationService: ExpenseCreationService) {
   }
 
   createFormGroup() {
-    return new FormGroup({
-      amount: new FormControl('amount'),
-      payee: new FormControl('payee'),
-      category: new FormControl('category'),
-      account: new FormControl('account'),
-      date: new FormControl('date'),
-      repeat: new FormControl('repeat'),
-      memo: new FormControl('memo'),
-      impulse: new FormControl('impulse'),
-      colorCode: new FormControl('color'),
+    this.expenseForm = this.fb.group({
+      amount: [''],
+      payee: [''],
+      category: [''],
+      account: [''],
+      date: [''],
+      repeat: [''],
+      memo: [''],
+      impulse: [''],
+      colorCode: [''],
     });
   }
 
+  onSubmit() {
+    console.log('reactive', this.expenseForm.value);
+    this.newExpense = this.expenseForm.value;
+    this.expenseCreationService.insertExpense(this.newExpense).subscribe();
+  }
+
   ngOnInit() {
+    this.createFormGroup();
   }
 }

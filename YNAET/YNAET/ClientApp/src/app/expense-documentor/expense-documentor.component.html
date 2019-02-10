@@ -18,11 +18,6 @@
     </label>
     <br />
     <label>
-      Date:
-      <input type="text" formControlName="date" placeholder="date">
-    </label>
-    <br />
-    <label>
       Category:
       <select type="text" formControlName="category">
         <option *ngFor="let category of categories" [value]="category">{{category}}</option>
@@ -54,6 +49,7 @@
     </label>
     <br />
   </div>
+  <button type="submit">Submit</button>
   </div>
   </form>
 
