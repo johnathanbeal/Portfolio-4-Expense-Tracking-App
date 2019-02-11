@@ -12,6 +12,6 @@ export class ExpenseCreationService {
   constructor(private http: HttpClient) { }
   
   insertExpense(expense: Expense): Observable<Expense> {
-      return this.http.post<Expense>('http://localhost:44354/api/expenses/', expense);
+      return this.http.post<Expense>('https://localhost:44354/api/expenses/', expense);
   }
 }

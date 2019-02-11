@@ -27,7 +27,7 @@ export class ExpenseDocumentorComponent implements OnInit {
     'Mortgage', 'Groceries', 'Car Gas', 'Trips', 'Birthdays', 'Celebrations',
     'Christmas', 'Kittens', 'Preschool', 'Car Expenses', 'EZ Pass', 'Subscriptions',
     'Stuff I Forgot to Budget For', 'Auto Loan', 'Student Loan', 'Jujitsu/Krav Maga',
-    'Swimming', 'VA529', 'Training Fund', 'Sports Gym', 'Dining Out', 'Fund Money']
+    'Swimming', 'VA529', 'Training Fund', 'Sports Gym', 'Dining Out', 'Fun Money']
 
   constructor(private fb: FormBuilder, private expenseCreationService: ExpenseCreationService) {
   }

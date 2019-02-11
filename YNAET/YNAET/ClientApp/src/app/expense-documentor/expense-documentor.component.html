@@ -1,6 +1,6 @@
 <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
 <div style="text-align:left">
-  <div >
+  <div>
     <h3>New Expense</h3>
     <label>
       Amount:
@@ -15,6 +15,11 @@
     <label>
       Date:
       <input type="text" formControlName="date" placeholder="date">
+    </label>
+    <br />
+    <label>
+      Memo:
+      <input type="text" formControlName="memo" placeholder="memo">
     </label>
     <br />
     <label>

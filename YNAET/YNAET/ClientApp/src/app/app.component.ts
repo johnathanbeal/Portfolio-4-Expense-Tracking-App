@@ -21,15 +21,15 @@ export class AppComponent implements OnInit{
 
   hideExpense = true;
 
-  categories   = ['Movies', 'Pokemon', 'Groceries', 'Jujitsu', 'Mortgage', 'Cell', 'Cable', 'Other'];
+  accounts = ['Suntrust', 'Middleburg', 'Wells Fargo'];
 
-  colorCode    = ['Grey', 'Black', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple'];
+  colorCodes = ['Grey', 'Black', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'Pink', 'Cornflower-Blue'];
 
-  account = ['Rebalance', 'Tax Return', 'Offering', 'Cell', 'Utilities',
+  categories = ['Rebalance', 'Tax Return', 'Offering', 'Cell', 'Utilities',
     'Mortgage', 'Groceries', 'Car Gas', 'Trips', 'Birthdays', 'Celebrations',
     'Christmas', 'Kittens', 'Preschool', 'Car Expenses', 'EZ Pass', 'Subscriptions',
     'Stuff I Forgot to Budget For', 'Auto Loan', 'Student Loan', 'Jujitsu/Krav Maga',
-  'Swimming', 'VA529', 'Training Fund', 'Sports Gym', 'Dining Out', 'Fund Money']
+    'Swimming', 'VA529', 'Training Fund', 'Sports Gym', 'Dining Out', 'Fun Money']
 
   constructor(private expenseQueryService: ExpenseQueryService, private expenseDeletionService: ExpenseDeletionService, private expenseCreationService: ExpenseCreationService) { }
 
