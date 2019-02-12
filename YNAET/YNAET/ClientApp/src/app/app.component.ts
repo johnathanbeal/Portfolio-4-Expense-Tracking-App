@@ -4,6 +4,8 @@ import { ExpenseQueryService } from './ExpenseQuery.Service';
 import { Observable } from 'rxjs';
 import { ExpenseDeletionService } from './expenseDeletion.service';
 import { ExpenseCreationService } from './expenseCreation.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -31,11 +33,12 @@ export class AppComponent implements OnInit{
     'Stuff I Forgot to Budget For', 'Auto Loan', 'Student Loan', 'Jujitsu/Krav Maga',
     'Swimming', 'VA529', 'Training Fund', 'Sports Gym', 'Dining Out', 'Fun Money']
 
-  constructor(private expenseQueryService: ExpenseQueryService, private expenseDeletionService: ExpenseDeletionService, private expenseCreationService: ExpenseCreationService) { }
+  constructor(private expenseQueryService: ExpenseQueryService, private expenseDeletionService: ExpenseDeletionService, private expenseCreationService: ExpenseCreationService, private router: Router) { }
 
   ngOnInit() {
     this.expenseQueryService.getAllExpenses()
       .subscribe(xp => this.expenses = xp);
+
         
   }
 
@@ -63,5 +66,9 @@ export class AppComponent implements OnInit{
     this.expense.impulse = null;
     this.expense.colorCode = "";
     this.expense.id = 0;
+  }
+
+  btnClick = function () {
+    this.router.navigateByUrl('app-expense-documentor');
   }
 }

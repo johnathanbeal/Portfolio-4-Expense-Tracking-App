@@ -15,6 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
+   
     "YNAET": {
       "commandName": "Project",
       "launchBrowser": true,

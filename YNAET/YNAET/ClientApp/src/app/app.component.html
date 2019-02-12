@@ -4,7 +4,8 @@
     Welcome to {{ title }}!
   </h1>
   <img width="250" alt="Show Me The Money!" src="./assets/AngularMoney.jpeg">
-  <app-expense-documentor></app-expense-documentor>
+  <button type="button" class="btn btn-primary-outline pull-right" (click)="btnClick();"> Add</button>
+  <!--<app-expense-documentor></app-expense-documentor>-->
   <div class="receipts">
     <h3>Receipts</h3>
     <ul>
@@ -30,7 +31,7 @@
   </fieldset>
   <label><input type="checkbox" [(ngModel)]="hideExpense" />Hide Expense Details</label>
   <br />
-  <!--<span><button (click)="delete(expense.id)">Delete Expense</button></span>-->
+  <span><button (click)="delete(expense.id)">Delete Expense</button></span>
   <span *ngIf="confirmDelete">
     <span>Are you sure you want to Delete?</span>
     <button class="btn btn-danger" (click)="deleteExpense(); confirmDelete=false; clearExpenses()">Yes</button>
@@ -53,7 +54,35 @@
     <fieldset>
       <label>
         Category:
-        <select [(ngModel)]="expense.category">
+        <select>
+          <option *ngFor="let category of categories" [value]="expense.category">{{expense.category}}</option>
+          <!--<option>Rebalance</option>
+          <option>Tax Return</option>
+          <option>Offering</option>
+          <option>Cell</option>
+          <option>Utilities</option>
+          <option>Mortgage</option>
+          <option>Groceries</option>
+          <option>Car Gas</option>
+          <option>Trips</option>
+          <option>Birthdays</option>
+          <option>Celebrations</option>
+          <option>Christmas</option>
+          <option>Kittens</option>
+          <option>Preschool</option>
+          <option>Car Expenses</option>
+          <option>EZ Pass</option>
+          <option>Subscriptions</option>
+          <option>Stuff I Forgot to Budget For</option>
+          <option>Auto Loan</option>
+          <option>Student Loan</option>
+          <option>Jujitsu/Krav Maga</option>
+          <option>Swimming</option>
+          <option>VA529</option>
+          <option>Training Fund'</option>
+          <option>Sports Gym</option>
+          <option>Dining Out</option>
+          <option>Fun Money</option>-->
         </select>
       </label>
     </fieldset>
