@@ -4,8 +4,10 @@
     Welcome to {{ title }}!
   </h1>
   <img width="250" alt="Show Me The Money!" src="./assets/AngularMoney.jpeg">
-  <button type="button" class="btn btn-primary-outline pull-right" (click)="btnClick();"> Add</button>
-  <!--<app-expense-documentor></app-expense-documentor>-->
+  <nav>
+  <!--<a routerLink="/app-expense-documentor" routerLinkActive="active">Document New Expense</a>-->
+    </nav>
+  <app-expense-documentor></app-expense-documentor>
   <div class="receipts">
     <h3>Receipts</h3>
     <ul>
@@ -31,8 +33,8 @@
   </fieldset>
   <label><input type="checkbox" [(ngModel)]="hideExpense" />Hide Expense Details</label>
   <br />
-  <span><button (click)="delete(expense.id)">Delete Expense</button></span>
-  <span *ngIf="confirmDelete">
+  <!--<span><button (click)="delete(expense.id)">Delete Expense</button></span>-->
+  <span *ngIf="confirmDelete">-->
     <span>Are you sure you want to Delete?</span>
     <button class="btn btn-danger" (click)="deleteExpense(); confirmDelete=false; clearExpenses()">Yes</button>
     <button class="btn btn-danger" (click)="confirmDelete=false">No</button>
