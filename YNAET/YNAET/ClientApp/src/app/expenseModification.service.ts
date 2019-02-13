@@ -12,7 +12,7 @@ export class ExpenseModificationService {
   constructor(private http: HttpClient) { }
   
   updateExpense(expenseModifier: ExpenseModifier): Observable<void> {
-    return this.http.put<void>('http://localhost:44354/api/expenses' + expenseModifier.id, expenseModifier);
+    return this.http.put<void>('https://localhost:44354/api/expenses/' + expenseModifier.id, expenseModifier);
   }
   
 }
