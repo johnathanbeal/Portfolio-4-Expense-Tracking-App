@@ -1,63 +1,73 @@
-<form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
 <div style="text-align:left">
   <div>
     <h3>New Expense</h3>
     <label>
-      Amount:
-      <input type="text" formControlName="amount" placeholder="amount">
+      <input align="left" type="checkbox" [(ngModel)]="hideExpense" />Hide New Expense Fields
     </label>
     <br />
-    <label>
-      Payee:
-      <input type="text" formControlName="payee" placeholder="payee">
-    </label>
-    <br />
-    <label>
-      Date:
-      <input type="text" formControlName="date" placeholder="date">
-    </label>
-    <br />
-    <label>
-      Memo:
-      <input type="text" formControlName="memo" placeholder="memo">
-    </label>
-    <br />
-    <label>
-      Category:
-      <select type="text" formControlName="category">
-        <option *ngFor="let category of categories" [value]="category">{{category}}</option>
-      </select>
-    </label>
-    <br />
-    <label>
-      Account:
-      <select type="text" formControlName="account">
-        <option *ngFor="let account of accounts" [value]="account">{{account}}</option>
-      </select>
-    </label>
-    <br />
-    <label>
-      Color:
-      <select type="text" formControlName="colorCode">
-        <option *ngFor="let colorCode of colorCodes" [value]="colorCode">{{colorCode}}</option>
-      </select>
-    </label>
-    <br />
-    <label>
-      Repeat:
-      <input type="checkbox" class="checkbox-bool" formControlName="repeat" align="left">
-    </label>
-    <br />
-    <label>
-      Impulse:
-      <input type="checkbox" class="checkbox-bool" formControlName="impulse" align="left">
-    </label>
-    <br />
-  </div>
-  <button type="submit">Submit</button>
-  </div>
-  <p>
-    Expense Form Status: {{expenseForm.status}}
-  </p>
-  </form>
+    <div [hidden]="hideExpense">
+      <div style="text-align:left">
+
+        <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+
+          <label>
+            Amount:
+            <input type="text" formControlName="amount" placeholder="amount">
+          </label>
+          <br />
+          <label>
+            Payee:
+            <input type="text" formControlName="payee" placeholder="payee">
+          </label>
+          <br />
+          <label>
+            Date:
+            <input type="text" formControlName="date" placeholder="date">
+          </label>
+          <br />
+          <label>
+            Memo:
+            <input type="text" formControlName="memo" placeholder="memo">
+          </label>
+          <br />
+          <label>
+            Category:
+            <select type="text" formControlName="category">
+              <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+            </select>
+          </label>
+          <br />
+          <label>
+            Account:
+            <select type="text" formControlName="account">
+              <option *ngFor="let account of accounts" [value]="account">{{account}}</option>
+            </select>
+          </label>
+          <br />
+          <label>
+            Color:
+            <select type="text" formControlName="colorCode">
+              <option *ngFor="let colorCode of colorCodes" [value]="colorCode">{{colorCode}}</option>
+            </select>
+          </label>
+          <br />
+          <label>
+            Repeat:
+            <input type="checkbox" class="checkbox-bool" formControlName="repeat" align="left">
+          </label>
+          <br />
+          <label>
+            Impulse:
+            <input type="checkbox" class="checkbox-bool" formControlName="impulse" align="left">
+          </label>
+          <br />
+          <button type="submit">Submit</button><button type="reset" class="btn btn-primary" id="reset-btn" ng-click="expenseForm.reset(); location.reload();">Reset?</button>
+        </form>
+
+        <p>
+          Expense Form Status: {{expenseForm.status}}
+        </p>
+      </div>
+      </div>
+    </div>
 

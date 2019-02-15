@@ -18,20 +18,20 @@ namespace YNAET.Controllers
         }
         
         [HttpPost("api/expenses")]
-        public ActionResult Post([FromBody]ExpenseInputModel expenseInputModel) 
+        public ActionResult Post([FromBody]ExpenseInputModel expenseInputModels) 
         {
             try
             {
                 var expenseEntity = new ExpenseEntity();
-                expenseEntity.Account = expenseInputModel.Account;
-                expenseEntity.Amount = expenseInputModel.Amount;
-                expenseEntity.Category = expenseInputModel.Category;
-                expenseEntity.ColorCode = expenseInputModel.ColorCode;
-                expenseEntity.Date = expenseInputModel.Date;
-                expenseEntity.Impulse = expenseInputModel.Impulse;
-                expenseEntity.Memo = expenseInputModel.Memo;
-                expenseEntity.Payee = expenseInputModel.Payee;
-                expenseEntity.Repeat = expenseInputModel.Repeat;
+                expenseEntity.Account = expenseInputModels.Account;
+                expenseEntity.Amount = expenseInputModels.Amount;
+                expenseEntity.Category = expenseInputModels.Category;
+                expenseEntity.ColorCode = expenseInputModels.ColorCode;
+                expenseEntity.Date = expenseInputModels.Date;
+                expenseEntity.Impulse = expenseInputModels.Impulse;
+                expenseEntity.Memo = expenseInputModels.Memo;
+                expenseEntity.Payee = expenseInputModels.Payee;
+                expenseEntity.Repeat = expenseInputModels.Repeat;
 
                 using (ISession session = _inHibernateSession.OpenSession())
                 {

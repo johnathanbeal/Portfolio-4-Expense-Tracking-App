@@ -9,6 +9,7 @@ import { ExpenseCreationService } from './expenseCreation.service';
 import { ExpenseDocumentorComponent } from './expense-documentor/expense-documentor.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ExpenseModificationService } from './expenseModification.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [ExpenseQueryService,
     ExpenseDeletionService,
     ExpenseCreationService,
+    ExpenseModificationService
 ],
   bootstrap: [AppComponent],
 })

@@ -19,11 +19,11 @@ export class ExpenseDocumentorComponent implements OnInit {
 
   expenseForm: FormGroup;
 
-  accounts = ['Suntrust', 'Middleburg', 'Wells Fargo'];
+  accounts = ['--Select An Account--', 'Suntrust', 'Middleburg', 'Wells Fargo'];
 
-  colorCodes = ['Grey', 'Black', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'Pink', 'Cornflower-Blue'];
+  colorCodes = ['--Select a Color', 'Grey', 'Black', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'Pink', 'Cornflower-Blue'];
 
-  categories = ['Rebalance', 'Tax Return', 'Offering', 'Cell', 'Utilities',
+  categories = ['--Select a Category--', 'Rebalance', 'Tax Return', 'Offering', 'Cell', 'Utilities',
     'Mortgage', 'Groceries', 'Car Gas', 'Trips', 'Birthdays', 'Celebrations',
     'Christmas', 'Kittens', 'Preschool', 'Car Expenses', 'EZ Pass', 'Subscriptions',
     'Stuff I Forgot to Budget For', 'Auto Loan', 'Student Loan', 'Jujitsu/Krav Maga',
@@ -50,7 +50,8 @@ export class ExpenseDocumentorComponent implements OnInit {
     console.log('reactive', this.expenseForm.value);
     this.newExpense = this.expenseForm.value;
     this.expenseCreationService.insertExpense(this.newExpense).subscribe();
-    this.expenseForm.reset();
+    //this.expenseForm.reset();
+    //location.reload();
   }
 
   ngOnInit() {

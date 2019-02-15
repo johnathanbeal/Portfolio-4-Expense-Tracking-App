@@ -4,15 +4,15 @@ import { HttpClient } from '@angular/common/http';
 import { Expense } from './model';
 
 export interface ExpenseModifier {
-  id: string;
+  expense: Expense;
 }
 
 @Injectable()
 export class ExpenseModificationService {
   constructor(private http: HttpClient) { }
   
-  updateExpense(expenseModifier: ExpenseModifier): Observable<void> {
-    return this.http.put<void>('https://localhost:44354/api/expenses/' + expenseModifier.id, expenseModifier);
+  updateExpense(expense): Observable<void> {
+    return this.http.put<void>('https://localhost:44354/api/expenses/' + expense.id, expense);
   }
   
 }

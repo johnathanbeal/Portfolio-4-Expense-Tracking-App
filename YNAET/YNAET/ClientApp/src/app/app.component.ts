@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ExpenseDeletionService } from './expenseDeletion.service';
 import { ExpenseCreationService } from './expenseCreation.service';
 import { Router } from '@angular/router';
+import { ExpenseModificationService } from './expenseModification.service';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class AppComponent implements OnInit{
     'Stuff I Forgot to Budget For', 'Auto Loan', 'Student Loan', 'Jujitsu/Krav Maga',
     'Swimming', 'VA529', 'Training Fund', 'Sports Gym', 'Dining Out', 'Fun Money']
 
-  constructor(private expenseQueryService: ExpenseQueryService, private expenseDeletionService: ExpenseDeletionService, private expenseCreationService: ExpenseCreationService, private router: Router) { }
+  constructor(private expenseQueryService: ExpenseQueryService, private expenseDeletionService: ExpenseDeletionService, private expenseCreationService: ExpenseCreationService, private expenseModificationService: ExpenseModificationService, private router: Router) { }
 
   ngOnInit() {
     this.expenseQueryService.getAllExpenses()
@@ -53,6 +54,10 @@ export class AppComponent implements OnInit{
     );
     var index = this.expenses.indexOf(this.expense);
     this.expenses.splice(index, 1);
+  }
+
+  updateExpense() {
+    this.expenseModificationService.updateExpense(this.expense).subscribe();
   }
 
   clearExpenses() {
