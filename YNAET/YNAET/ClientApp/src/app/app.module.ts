@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ExpenseDeletionService } from './expenseDeletion.service';
 import { ExpenseCreationService } from './expenseCreation.service';
 import { ExpenseDocumentorComponent } from './expense-documentor/expense-documentor.component';
-import { HomeComponent } from './home/home.component';
+import { ReceiptComponent } from './receipt/receipt.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ExpenseModificationService } from './expenseModification.service';
 //import { InMemoryWebApiModule } from 'angular-in-memory-web-api'
@@ -19,7 +19,7 @@ import { ExpenseModificationService } from './expenseModification.service';
   declarations: [
     AppComponent,
     ExpenseDocumentorComponent,
-    HomeComponent
+    ReceiptComponent
     
   ],
   imports: [

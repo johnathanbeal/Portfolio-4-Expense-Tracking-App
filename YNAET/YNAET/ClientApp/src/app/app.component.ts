@@ -44,7 +44,9 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     this.expenseQueryService.getAllExpenses()
-      .subscribe(xp => this.expenses = xp);       
+      .subscribe(xp => this.expenses = xp);
+
+    this.expense = this.expenses[0];
   }
 
   createExpense(expense) {
@@ -65,16 +67,15 @@ export class AppComponent implements OnInit{
   }
 
   clearExpenses() {
-    this.expense.amount = 0;
+    this.expense.id = 0;
+    this.expense.amount = 0.00;
     this.expense.payee = "";
-    this.expense.memo = "";
-    this.expense.category = "";
-    this.expense.account = "";
     this.expense.date = "";
+    this.expense.category = "";
     this.expense.repeat = null;
     this.expense.impulse = null;
+    this.expense.account = "";
     this.expense.colorCode = "";
-    this.expense.id = 0;
   }
   
 }

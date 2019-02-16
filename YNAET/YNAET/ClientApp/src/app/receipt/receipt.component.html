@@ -1,21 +1,11 @@
-<p>
-  home works!
-</p>
 <div style="text-align:left">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="250" alt="Show Me The Money!" src="./assets/AngularMoney.jpeg">
-  <nav>
-    <a routerLink="/app-expense-documentor" routerLinkActive="active">Document New Expense</a>
- </nav>
-
   <div class="receipts">
     <h3>Receipts</h3>
     <ul>
       <li *ngFor="let exp of expenses"
           (click)="expense = exp"
-          [ngClass]="{selected: exp === expense}">{{exp.memo}}
+          [ngClass]="{selected: exp === expense}">
+        {{exp.memo}}
       </li>
     </ul>
   </div>
@@ -34,24 +24,30 @@
   </fieldset>
   <label><input type="checkbox" [(ngModel)]="hideExpense" />Hide Expense Details</label>
   <br />
-  <span><button (click)="delete(expense.id)">Delete Expense</button></span>
+  <!--<span><button (click)="delete(expense.id)">Delete Expense</button></span>-->
   <span *ngIf="confirmDelete">
     <span>Are you sure you want to Delete?</span>
     <button class="btn btn-danger" (click)="deleteExpense(); confirmDelete=false; clearExpenses()">Yes</button>
     <button class="btn btn-danger" (click)="confirmDelete=false">No</button>
-  </span>-->
- <button *ngIf="!confirmDelete" class="btn btn-danger" (click)="confirmDelete=true">Delete</button>-->
+  </span>
+  <button *ngIf="!confirmDelete" class="btn btn-danger" (click)="confirmDelete=true">Delete</button>
   <span *ngIf="confirmUpdate">
     <span>Are you sure you want to Update?</span>
     <button class="btn btn-danger" (click)="updateExpense(); confirmUpdate=false">Yes</button>
     <button class="btn btn-danger" (click)="confirmUpdate=false">No</button>
   </span>
-  <button *ngIf="!confirmUpdate" class="btn btn-danger" (click)="confirmUpdate=true">Update</button>-->
+  <button *ngIf="!confirmUpdate" class="btn btn-danger" (click)="confirmUpdate=true">Update</button>
   <div [hidden]="hideExpense">
     <fieldset>
       <label>
         Id:
         <input [(ngModel)]="expense.id" placeholder="id">
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Memo:
+        <input [(ngModel)]="expense.memo" placeholder="memo">
       </label>
     </fieldset>
     <fieldset>
@@ -64,8 +60,9 @@
       <label>
         Category:
         <select>
-          <option *ng-->For="let category of categories" [value]="expense.category">{{expense.category}}
-</option>
+          <option *ng-->
+            For="let category of categories" [value]="expense.category">{{expense.category}}
+          </option>
           <!--<option>Rebalance</option>
           <option>Tax Return</option>
           <option>Offering</option>
@@ -139,3 +136,5 @@
         </select>
       </label>
     </fieldset>
+  </div>
+</div>

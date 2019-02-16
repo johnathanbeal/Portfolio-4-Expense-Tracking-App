@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 //import { SharedDataService } from '../sharedData.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'receipts',
+  templateUrl: './receipt.component.html',
+  styleUrls: ['./receipt.component.css']
 })
-export class HomeComponent implements OnInit {
+export class ReceiptComponent implements OnInit {
 
   //accounts: string[];
   //account: string;

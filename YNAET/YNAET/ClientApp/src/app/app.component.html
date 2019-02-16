@@ -1,11 +1,16 @@
-<div style="text-align:left">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="250" alt="Show Me The Money!" src="./assets/AngularMoney.jpeg">
+<nav>
+  <a routerLink="/" routerLinkActive="active">Whatever You Do, Don't Push This Button</a>&nbsp;
+  <a routerLink="/receipts" routerLinkActive="active">Receipts</a>&nbsp;
+  <a routerLink="/expenses" routerLinkActive="active">Create New Expense</a>&nbsp;
+</nav>
 
-  <h2><a [routerLink]="'/home'">Receipts</a></h2>
-  <h2><a [routerLink]="'/expenses'">New Receipt</a></h2>
+<h1>
+  Welcome to {{ title }}!
+</h1>
+<img width="250" alt="Show Me The Money!" src="./assets/AngularMoney.jpeg">
 <router-outlet></router-outlet>
+
+
+
 
 
