@@ -34,13 +34,17 @@ export class AppComponent implements OnInit{
     'Stuff I Forgot to Budget For', 'Auto Loan', 'Student Loan', 'Jujitsu/Krav Maga',
     'Swimming', 'VA529', 'Training Fund', 'Sports Gym', 'Dining Out', 'Fun Money']
 
-  constructor(private expenseQueryService: ExpenseQueryService, private expenseDeletionService: ExpenseDeletionService, private expenseCreationService: ExpenseCreationService, private expenseModificationService: ExpenseModificationService, private router: Router) { }
+  constructor(
+    private expenseQueryService: ExpenseQueryService,
+    private expenseDeletionService: ExpenseDeletionService,
+    private expenseCreationService: ExpenseCreationService,
+    private expenseModificationService: ExpenseModificationService)
+  //private router: Router)
+  { }
 
   ngOnInit() {
     this.expenseQueryService.getAllExpenses()
-      .subscribe(xp => this.expenses = xp);
-
-        
+      .subscribe(xp => this.expenses = xp);       
   }
 
   createExpense(expense) {
@@ -72,8 +76,5 @@ export class AppComponent implements OnInit{
     this.expense.colorCode = "";
     this.expense.id = 0;
   }
-
-  btnClick = function () {
-    this.router.navigateByUrl('app-expense-documentor');
-  }
+  
 }

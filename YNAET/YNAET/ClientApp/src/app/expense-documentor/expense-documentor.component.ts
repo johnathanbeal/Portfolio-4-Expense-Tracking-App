@@ -50,8 +50,6 @@ export class ExpenseDocumentorComponent implements OnInit {
     console.log('reactive', this.expenseForm.value);
     this.newExpense = this.expenseForm.value;
     this.expenseCreationService.insertExpense(this.newExpense).subscribe();
-    //this.expenseForm.reset();
-    //location.reload();
   }
 
   ngOnInit() {

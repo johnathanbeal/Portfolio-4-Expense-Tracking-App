@@ -10,6 +10,10 @@ import { ExpenseDocumentorComponent } from './expense-documentor/expense-documen
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ExpenseModificationService } from './expenseModification.service';
+//import { InMemoryWebApiModule } from 'angular-in-memory-web-api'
+//import { SharedDataService } from './sharedData.service';
+
+
 
 @NgModule({
   declarations: [
@@ -24,13 +28,15 @@ import { ExpenseModificationService } from './expenseModification.service';
     //Observable
     HttpClientModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    //InMemoryWebApiModule.forRoot(SharedDataService)
    
   ],
   providers: [ExpenseQueryService,
     ExpenseDeletionService,
     ExpenseCreationService,
-    ExpenseModificationService
+    ExpenseModificationService,
+    //SharedDataService
 ],
   bootstrap: [AppComponent],
 })

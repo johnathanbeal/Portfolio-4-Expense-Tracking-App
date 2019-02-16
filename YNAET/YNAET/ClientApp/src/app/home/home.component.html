@@ -7,18 +7,135 @@
   </h1>
   <img width="250" alt="Show Me The Money!" src="./assets/AngularMoney.jpeg">
   <nav>
-    <!--<a routerLink="/app-expense-documentor" routerLinkActive="active">Document New Expense</a>-->
-  </nav>
-  
-    <!--<h5>Here are some links to help you start: </h5>
+    <a routerLink="/app-expense-documentor" routerLinkActive="active">Document New Expense</a>
+ </nav>
+
+  <div class="receipts">
+    <h3>Receipts</h3>
     <ul>
-      <li>
-        <h6><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h6>
+      <li *ngFor="let exp of expenses"
+          (click)="expense = exp"
+          [ngClass]="{selected: exp === expense}">{{exp.memo}}
       </li>
-      <li>
-        <h6><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h6>
-      </li>
-      <li>
-        <h6><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h6>
-      </li>
-    </ul>-->
+    </ul>
+  </div>
+  <h3>Expense:</h3>
+  <fieldset>
+    <label>
+      Amount:
+      <input [(ngModel)]="expense.amount" placeholder="amount">
+    </label>
+  </fieldset>
+  <fieldset>
+    <label>
+      Payee:
+      <input [(ngModel)]="expense.payee" placeholder="Payee">
+    </label>
+  </fieldset>
+  <label><input type="checkbox" [(ngModel)]="hideExpense" />Hide Expense Details</label>
+  <br />
+  <span><button (click)="delete(expense.id)">Delete Expense</button></span>
+  <span *ngIf="confirmDelete">
+    <span>Are you sure you want to Delete?</span>
+    <button class="btn btn-danger" (click)="deleteExpense(); confirmDelete=false; clearExpenses()">Yes</button>
+    <button class="btn btn-danger" (click)="confirmDelete=false">No</button>
+  </span>-->
+ <button *ngIf="!confirmDelete" class="btn btn-danger" (click)="confirmDelete=true">Delete</button>-->
+  <span *ngIf="confirmUpdate">
+    <span>Are you sure you want to Update?</span>
+    <button class="btn btn-danger" (click)="updateExpense(); confirmUpdate=false">Yes</button>
+    <button class="btn btn-danger" (click)="confirmUpdate=false">No</button>
+  </span>
+  <button *ngIf="!confirmUpdate" class="btn btn-danger" (click)="confirmUpdate=true">Update</button>-->
+  <div [hidden]="hideExpense">
+    <fieldset>
+      <label>
+        Id:
+        <input [(ngModel)]="expense.id" placeholder="id">
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Date:
+        <input [(ngModel)]="expense.date" placeholder="Date">
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Category:
+        <select>
+          <option *ng-->For="let category of categories" [value]="expense.category">{{expense.category}}
+</option>
+          <!--<option>Rebalance</option>
+          <option>Tax Return</option>
+          <option>Offering</option>
+          <option>Cell</option>
+          <option>Utilities</option>
+          <option>Mortgage</option>
+          <option>Groceries</option>
+          <option>Car Gas</option>
+          <option>Trips</option>
+          <option>Birthdays</option>
+          <option>Celebrations</option>
+          <option>Christmas</option>
+          <option>Kittens</option>
+          <option>Preschool</option>
+          <option>Car Expenses</option>
+          <option>EZ Pass</option>
+          <option>Subscriptions</option>
+          <option>Stuff I Forgot to Budget For</option>
+          <option>Auto Loan</option>
+          <option>Student Loan</option>
+          <option>Jujitsu/Krav Maga</option>
+          <option>Swimming</option>
+          <option>VA529</option>
+          <option>Training Fund'</option>
+          <option>Sports Gym</option>
+          <option>Dining Out</option>
+          <option>Fun Money</option>-->
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Repeat:
+        <select [(ngModel)]="expense.repeat">
+          <option>true</option>
+          <option>false</option>
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Impulse:
+        <select [(ngModel)]="expense.impulse">
+          <option>true</option>
+          <option>false</option>
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Account:
+        <select [(ngModel)]="expense.account">
+          <option>Wells Fargo</option>
+          <option>Middleburg Bank</option>
+          <option>Suntrust</option>
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Color:
+        <select [(ngModel)]="expense.colorCode">
+          <option>Grey</option>
+          <option>Black</option>
+          <option>Red</option>
+          <option>Orange</option>
+          <option>Yellow</option>
+          <option>Green</option>
+          <option>Blue</option>
+          <option>Purple</option>
+        </select>
+      </label>
+    </fieldset>
