@@ -34,39 +34,10 @@ export class AppComponent implements OnInit{
   { }
 
   ngOnInit() {
-    this.expenseQueryService.getAllExpenses()
-      .subscribe(xp => this.expenses = xp);
-
-    this.expense = this.expenses[0];
+    
   }
 
   createExpense(expense) {
     this.expenseCreationService.insertExpense(expense).subscribe();
-  }
-
-  deleteExpense() {
-    this.expenseDeletionService.deleteExpense(this.expense.id).subscribe(
-      () => console.log('Expense with Id = {{this.expense}} deleted'),
-        (err) => console.log(err)
-    );
-    var index = this.expenses.indexOf(this.expense);
-    this.expenses.splice(index, 1);
-  }
-
-  updateExpense() {
-    this.expenseModificationService.updateExpense(this.expense).subscribe();
-  }
-
-  clearExpenses() {
-    this.expense.id = 0;
-    this.expense.amount = 0.00;
-    this.expense.payee = "";
-    this.expense.date = "";
-    this.expense.category = "";
-    this.expense.repeat = null;
-    this.expense.impulse = null;
-    this.expense.account = "";
-    this.expense.colorCode = "";
-  }
-  
+  }  
 }
