@@ -16,15 +16,15 @@ export class AppComponent implements OnInit{
 
   hideExpense = true;
 
-  accounts = ['Suntrust', 'Middleburg', 'Wells Fargo'];
+  //accounts = ['Suntrust', 'Middleburg', 'Wells Fargo'];
 
-  colorCodes = ['Grey', 'Black', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'Pink', 'Cornflower-Blue'];
+  //colorCodes = ['Grey', 'Black', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'Pink', 'Cornflower-Blue'];
 
-  categories = ['Rebalance', 'Tax Return', 'Offering', 'Cell', 'Utilities',
-    'Mortgage', 'Groceries', 'Car Gas', 'Trips', 'Birthdays', 'Celebrations',
-    'Christmas', 'Kittens', 'Preschool', 'Car Expenses', 'EZ Pass', 'Subscriptions',
-    'Stuff I Forgot to Budget For', 'Auto Loan', 'Student Loan', 'Jujitsu/Krav Maga',
-    'Swimming', 'VA529', 'Training Fund', 'Sports Gym', 'Dining Out', 'Fun Money']
+  //categories = ['Rebalance', 'Tax Return', 'Offering', 'Cell', 'Utilities',
+  //  'Mortgage', 'Groceries', 'Car Gas', 'Trips', 'Birthdays', 'Celebrations',
+  //  'Christmas', 'Kittens', 'Preschool', 'Car Expenses', 'EZ Pass', 'Subscriptions',
+  //  'Stuff I Forgot to Budget For', 'Auto Loan', 'Student Loan', 'Jujitsu/Krav Maga',
+  //  'Swimming', 'VA529', 'Training Fund', 'Sports Gym', 'Dining Out', 'Fun Money']
 
   constructor(
     private expenseQueryService: ExpenseQueryService,
