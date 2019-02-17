@@ -18,8 +18,7 @@ export class AppComponent implements OnInit{
   title = 'YNAET: You Need An Expense Tracker';
 
 
-  expenses: Expense[];
-  expense: Expense = new Expense();
+  
 
 
   hideExpense = true;

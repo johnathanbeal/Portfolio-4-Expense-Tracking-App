@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Expense } from '../model';
 //import { SharedDataService } from '../sharedData.service';
 
 @Component({
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./receipt.component.css']
 })
 export class ReceiptComponent implements OnInit {
+
+  expenses: Expense[];
+  expense: Expense = new Expense();
 
   //accounts: string[];
   //account: string;

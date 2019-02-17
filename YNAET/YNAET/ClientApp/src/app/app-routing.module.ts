@@ -5,7 +5,7 @@ import { ReceiptComponent } from './receipt/receipt.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
+  //{ path: '', component: AppComponent },
   { path: 'receipts', component: ReceiptComponent},
   { path: 'expenses', component: ExpenseDocumentorComponent },
 
