@@ -15,6 +15,8 @@ import { ExpenseCreationService } from '../expenseCreation.service';
 
 export class ExpenseDocumentorComponent implements OnInit {
 
+  hideLogo = false;
+
   newExpense: Expense;
 
   expenseForm: FormGroup;
@@ -29,7 +31,8 @@ export class ExpenseDocumentorComponent implements OnInit {
     'Stuff I Forgot to Budget For', 'Auto Loan', 'Student Loan', 'Jujitsu/Krav Maga',
     'Swimming', 'VA529', 'Training Fund', 'Sports Gym', 'Dining Out', 'Fun Money']
 
-  constructor(private fb: FormBuilder, private expenseCreationService: ExpenseCreationService) {
+  constructor(private fb: FormBuilder,
+    private expenseCreationService: ExpenseCreationService) {
   }
 
   createFormGroup() {
@@ -50,6 +53,13 @@ export class ExpenseDocumentorComponent implements OnInit {
     console.log('reactive', this.expenseForm.value);
     this.newExpense = this.expenseForm.value;
     this.expenseCreationService.insertExpense(this.newExpense).subscribe();
+    this.expenseForm.reset();
+    alert("Expense Has Been Sent to the Post Controller");
+  }
+
+
+  createExpense(expense) {
+    this.expenseCreationService.insertExpense(expense).subscribe();
   }
 
   ngOnInit() {

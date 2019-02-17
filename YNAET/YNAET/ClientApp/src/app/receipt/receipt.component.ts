@@ -13,17 +13,19 @@ import { ExpenseModificationService } from '../expenseModification.service';
 })
 export class ReceiptComponent implements OnInit {
 
+  hideExpense = true;
+
   expenses: Expense[];
   expense: Expense = new Expense();
 
   accounts: string[];
   account: string;
 
-  //colorCodes: string[];
-  //colorCode: string;
+  colorCodes: string[];
+  colorCode: string;
 
-  //categories: string[];
-  //category: string;
+  categories: string[];
+  category: string;
 
   constructor(private expenseQueryService: ExpenseQueryService,
     private expenseDeletionService: ExpenseDeletionService,

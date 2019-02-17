@@ -7,7 +7,7 @@
     <div [hidden]="hideExpense">
       <div style="text-align:left">
 
-        <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+        <form novalidate (ngSubmit)="onSubmit()" [formGroup]="expenseForm" >
 
           <label>
             Amount:
@@ -60,7 +60,8 @@
             <input type="checkbox" class="checkbox-bool" formControlName="impulse" align="left">
           </label>
           <br />
-          <button type="submit">Submit</button><button type="reset" class="btn btn-primary" id="reset-btn" ng-click="expenseForm.reset(); location.reload();">Reset?</button>
+          <button type="submit">Submit</button>
+          <button type="reset" class="btn btn-primary" id="reset-btn" ng-click="expenseForm.reset(); location.reload();">Reset?</button>
         </form>
 
         <p>

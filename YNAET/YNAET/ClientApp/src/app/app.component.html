@@ -7,8 +7,13 @@
 <h1>
   Welcome to {{ title }}!
 </h1>
-<img width="250" alt="Show Me The Money!" src="./assets/AngularMoney.jpeg">
-<router-outlet></router-outlet>
+<label><input type="checkbox" [(ngModel)]="hideLogo" />Hide Logo</label>
+<br />
+<div [hidden]="hideLogo">
+  <img width="250" alt="Show Me The Money!" src="./assets/AngularMoney.jpeg">
+</div>
+  <router-outlet></router-outlet>
+
 
 
 

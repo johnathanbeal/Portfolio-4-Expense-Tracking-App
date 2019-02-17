@@ -14,7 +14,6 @@ import { ExpenseModificationService } from './expenseModification.service';
 export class AppComponent implements OnInit{
   title = 'YNAET: You Need An Expense Tracker';
 
-  hideExpense = true;
 
   //accounts = ['Suntrust', 'Middleburg', 'Wells Fargo'];
 
