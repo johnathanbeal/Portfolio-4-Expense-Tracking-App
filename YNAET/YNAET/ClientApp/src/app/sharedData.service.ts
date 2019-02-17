@@ -15,7 +15,7 @@ export class SharedDataService {
   }
 
   getColorCodes() {
-    let colorCodes = ['--Select a Color', 'Grey', 'Black', 'Red', 'Orange', 'yellow', 'Green', 'Blue', 'Purple', 'Pink', 'Cornflower-Blue'];
+    let colorCodes = ['--Select a Color--', 'Grey', 'Black', 'Red', 'Orange', 'yellow', 'Green', 'Blue', 'Purple', 'Pink', 'Cornflower-Blue'];
     return colorCodes;
   }
 

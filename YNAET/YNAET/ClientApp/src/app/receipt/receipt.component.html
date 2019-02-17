@@ -59,11 +59,9 @@
     <fieldset>
       <label>
         Category:
-        <select>
-          <option *ng-->
-            For="let category of categories" [value]="expense.category">{{expense.category}}
-          </option>
-          <!--<option>Rebalance</option>
+        <select [(ngModel)]="expense.category">
+          <option>--Select a Category--</option>
+          <option>Rebalance</option>
           <option>Tax Return</option>
           <option>Offering</option>
           <option>Cell</option>
@@ -89,7 +87,7 @@
           <option>Training Fund'</option>
           <option>Sports Gym</option>
           <option>Dining Out</option>
-          <option>Fun Money</option>-->
+          <option>Fun Money</option>
         </select>
       </label>
     </fieldset>
@@ -115,7 +113,10 @@
       <label>
         Account:
         <select [(ngModel)]="expense.account">
-          <option *ngFor="let account of accounts" [value]="account">{{account}}</option>
+          <option>--Select An Account--</option>
+          <option>Wells Fargo</option>
+          <option>Middleburg Bank</option>
+          <option>Suntrust</option>
         </select>
       </label>
     </fieldset>
@@ -123,6 +124,7 @@
       <label>
         Color:
         <select [(ngModel)]="expense.colorCode">
+          <option>--Select a Color--</option>
           <option>Grey</option>
           <option>Black</option>
           <option>Red</option>
