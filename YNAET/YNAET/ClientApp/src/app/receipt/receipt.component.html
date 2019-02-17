@@ -112,7 +112,8 @@
     <fieldset>
       <label>
         Account:
-        <select [(ngModel)]="expense.account">
+        <select [(ngModel)]="this.expense.account">
+          <!--<option *ngFor="let account of accounts" [value]="this.expense.account">{{this.expense.account}}</option>-->
           <option>--Select An Account--</option>
           <option>Wells Fargo</option>
           <option>Middleburg Bank</option>

@@ -10,6 +10,13 @@ namespace YNAET.Controllers
     public class ExpensesGetController : Controller
     {
         private readonly INHibernateSession _inHibernateSession;
+        private ExpenseEntity _expense;
+
+        public ExpensesGetController(INHibernateSession nHibernateSession, ExpenseEntity expense)
+        {
+            _inHibernateSession = nHibernateSession;
+            _expense = expense;
+        }
 
         public ExpensesGetController(INHibernateSession nHibernateSession)
         {
@@ -31,13 +38,12 @@ namespace YNAET.Controllers
         [HttpGet("api/expenses/{id}")]
         public ActionResult Details(int id)
         {
-            ExpenseEntity expense = new ExpenseEntity();
             using (ISession session = _inHibernateSession.OpenSession())
             {
-                expense = session.Query<ExpenseEntity>().Where(b => b.Id == id).FirstOrDefault();
+                _expense = session.Query<ExpenseEntity>().Where(b => b.Id == id).FirstOrDefault();
             }
 
-            return new JsonResult(expense);
+            return new JsonResult(_expense);
         }
         
     }
