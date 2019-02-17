@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Expense } from '../model';
-//import { SharedDataService } from '../sharedData.service';
+import { SharedDataService } from '../sharedData.service';
+
 
 @Component({
   selector: 'receipts',
@@ -12,8 +13,8 @@ export class ReceiptComponent implements OnInit {
   expenses: Expense[];
   expense: Expense = new Expense();
 
-  //accounts: string[];
-  //account: string;
+  accounts: string[];
+  account: string;
 
   //colorCodes: string[];
   //colorCode: string;
@@ -22,13 +23,13 @@ export class ReceiptComponent implements OnInit {
   //category: string;
 
   constructor(
-    //private sharedDataService: SharedDataService
+    private sharedDataService: SharedDataService
 ) { }
 
   ngOnInit() {
-    //this.accounts = this.sharedDataService.getAccounts();
-    //this.colorCodes = this.sharedDataService.getColorCodes();
-    //this.categories = this.sharedDataService.getCategories();
+    this.accounts = this.sharedDataService.getAccounts();
+    this.colorCodes = this.sharedDataService.getColorCodes();
+    this.categories = this.sharedDataService.getCategories();
   }
 
 }

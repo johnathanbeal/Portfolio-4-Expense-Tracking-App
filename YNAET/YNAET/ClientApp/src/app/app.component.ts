@@ -1,10 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Expense } from './model';
 import { ExpenseQueryService } from './ExpenseQuery.Service';
-import { Observable } from 'rxjs';
 import { ExpenseDeletionService } from './expenseDeletion.service';
 import { ExpenseCreationService } from './expenseCreation.service';
-import { Router } from '@angular/router';
 import { ExpenseModificationService } from './expenseModification.service';
 
 
@@ -16,10 +13,6 @@ import { ExpenseModificationService } from './expenseModification.service';
 
 export class AppComponent implements OnInit{
   title = 'YNAET: You Need An Expense Tracker';
-
-
-  
-
 
   hideExpense = true;
 
@@ -38,7 +31,6 @@ export class AppComponent implements OnInit{
     private expenseDeletionService: ExpenseDeletionService,
     private expenseCreationService: ExpenseCreationService,
     private expenseModificationService: ExpenseModificationService)
-  //private router: Router)
   { }
 
   ngOnInit() {
