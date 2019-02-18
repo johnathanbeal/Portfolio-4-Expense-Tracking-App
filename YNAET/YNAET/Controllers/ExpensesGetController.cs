@@ -12,17 +12,11 @@ namespace YNAET.Controllers
         private readonly INHibernateSession _inHibernateSession;
         private ExpenseEntity _expense;
 
-        public ExpensesGetController(INHibernateSession nHibernateSession, ExpenseEntity expense)
-        {
-            _inHibernateSession = nHibernateSession;
-            _expense = expense;
-        }
-
         public ExpensesGetController(INHibernateSession nHibernateSession)
         {
             _inHibernateSession = nHibernateSession;
         }
-
+       
         [HttpGet("api/expenses")]
         public IActionResult Execute()
         {
