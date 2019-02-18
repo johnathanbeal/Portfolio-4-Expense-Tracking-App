@@ -30,7 +30,7 @@ namespace YNAET.Controllers
         }
 
         [HttpGet("api/expenses/{id}")]
-        public ActionResult Details(int id)
+        public JsonResult Details(int id)
         {
             using (ISession session = _inHibernateSession.OpenSession())
             {
