@@ -149,5 +149,69 @@ namespace YNAET.Tests
             var result = mockExpenseGetController.Details(1);
             Assert.AreEqual(result.Value, expenseEntity);
         }
+
+        [Test]
+        public void Should_Be_Same_Expense()
+        {
+            var expenseEntity = new ExpenseEntity()
+            {
+                Id = 1,
+                Payee = "Toys R Us",
+                Amount = 100.00M,
+                Category = "Fun Money",
+                Account = "Suntrust",
+                Date = DateTime.Today,
+                Repeat = false,
+                Impulse = true,
+                Memo = "He-man Toys",
+                ColorCode = "Pink"
+
+            };
+
+            var session = new Mock<ISession>();
+            session.Setup(x => x.Query<ExpenseEntity>())
+                .Returns(() => new List<ExpenseEntity> { expenseEntity }.AsQueryable());
+
+            var nhibernateSession = new Mock<INHibernateSession>();
+            nhibernateSession.Setup(x => x.OpenSession())
+                .Returns(() => session.Object);
+
+            var mockExpenseGetController = new ExpensesGetController(nhibernateSession.Object);
+
+            var result = mockExpenseGetController.Details(1);
+            Assert.AreSame(result.Value, expenseEntity);
+        }
+
+        [Test]
+        public void Should_Have_Equal_Input_Output_Expense()
+        {
+            var expenseEntity = new ExpenseEntity()
+            {
+                Id = 1,
+                Payee = "Toys R Us",
+                Amount = 100.00M,
+                Category = "Fun Money",
+                Account = "Suntrust",
+                Date = DateTime.Today,
+                Repeat = false,
+                Impulse = true,
+                Memo = "He-man Toys",
+                ColorCode = "Pink"
+
+            };
+
+            var session = new Mock<ISession>();
+            session.Setup(x => x.Query<ExpenseEntity>())
+                .Returns(() => new List<ExpenseEntity> { expenseEntity }.AsQueryable());
+
+            var nhibernateSession = new Mock<INHibernateSession>();
+            nhibernateSession.Setup(x => x.OpenSession())
+                .Returns(() => session.Object);
+
+            var mockExpenseGetController = new ExpensesGetController(nhibernateSession.Object);
+
+            var result = mockExpenseGetController.Details(1).Value as ExpenseEntity;
+            Assert.AreEqual(result, expenseEntity);
+        }
     }
 }
