@@ -4,17 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using YNAET.Entities;
 using YNAET.Nibernate;
+using YNAET.Services;
 
 namespace YNAET.Controllers
 {
     public class ExpensesGetController : Controller
     {
         private readonly INHibernateSession _inHibernateSession;
-        private ExpenseEntity _expense;
 
-        public ExpensesGetController(INHibernateSession nHibernateSession)
+        public ExpensesGetController()
         {
-            _inHibernateSession = nHibernateSession;
         }
        
         [HttpGet("api/expenses")]
@@ -30,14 +29,11 @@ namespace YNAET.Controllers
         }
 
         [HttpGet("api/expenses/{id}")]
-        public JsonResult Details(int id)
+        public ExpenseEntity Details(int id)
         {
-            using (ISession session = _inHibernateSession.OpenSession())
-            {
-                _expense = session.Query<ExpenseEntity>().Where(b => b.Id == id).FirstOrDefault();
-            }
+            IExpenseQueryService expenseData = new ExpenseQueryService(_inHibernateSession);
+            return expenseData.Query(id);
 
-            return new JsonResult(_expense);
         }
         
     }

@@ -10,6 +10,7 @@ using YNAET.Controllers;
 using YNAET.Entities;
 using YNAET.Models;
 using YNAET.Nibernate;
+using YNAET.Services;
 
 namespace YNAET.Tests
 {
@@ -43,10 +44,10 @@ namespace YNAET.Tests
             nhibernateSession.Setup(x => x.OpenSession())
                 .Returns(() => session.Object);
 
-            var mockExpenseGetController = new ExpensesGetController(nhibernateSession.Object);
+            var expenseData = new ExpenseQueryService(nhibernateSession.Object);
 
             JsonResult expectedType = new JsonResult(expenseEntity);
-            var result = mockExpenseGetController.Details(1);
+            var result = expenseData.Query(1);
             Assert.IsInstanceOf(expectedType.GetType(), result);
 
         }
@@ -77,9 +78,9 @@ namespace YNAET.Tests
             nhibernateSession.Setup(x => x.OpenSession())
                 .Returns(() => session.Object);
 
-            var mockExpenseGetController = new ExpensesGetController(nhibernateSession.Object);
+            var expenseData = new ExpenseQueryService(nhibernateSession.Object);
 
-            var result = mockExpenseGetController.Details(1);
+            var result = expenseData.Query(1);
             Assert.IsNotNull(result);
 
         }
@@ -110,10 +111,10 @@ namespace YNAET.Tests
             nhibernateSession.Setup(x => x.OpenSession())
                 .Returns(() => session.Object);
 
-            var mockExpenseGetController = new ExpensesGetController(nhibernateSession.Object);
+            var expenseData = new ExpenseQueryService(nhibernateSession.Object);
 
-            var result = mockExpenseGetController.Details(1);
-            Assert.IsNotNull(result.Value);
+            var result = expenseData.Query(1);
+            Assert.IsNotNull(result);
 
         }
 
@@ -144,10 +145,10 @@ namespace YNAET.Tests
             nhibernateSession.Setup(x => x.OpenSession())
                 .Returns(() => session.Object);
 
-            var mockExpenseGetController = new ExpensesGetController(nhibernateSession.Object);
+            var expenseData = new ExpenseQueryService(nhibernateSession.Object);
 
-            var result = mockExpenseGetController.Details(1);
-            Assert.AreEqual(result.Value, expenseEntity);
+            var result = expenseData.Query(1);
+            Assert.AreEqual(result, expenseEntity);
         }
 
         [Test]
@@ -176,10 +177,10 @@ namespace YNAET.Tests
             nhibernateSession.Setup(x => x.OpenSession())
                 .Returns(() => session.Object);
 
-            var mockExpenseGetController = new ExpensesGetController(nhibernateSession.Object);
+            var expenseData = new ExpenseQueryService(nhibernateSession.Object);
 
-            var result = mockExpenseGetController.Details(1);
-            Assert.AreSame(result.Value, expenseEntity);
+            var result = expenseData.Query(1);
+            Assert.AreSame(result, expenseEntity);
         }
 
         [Test]
@@ -208,9 +209,9 @@ namespace YNAET.Tests
             nhibernateSession.Setup(x => x.OpenSession())
                 .Returns(() => session.Object);
 
-            var mockExpenseGetController = new ExpensesGetController(nhibernateSession.Object);
+            var expenseData = new ExpenseQueryService(nhibernateSession.Object);
 
-            var result = mockExpenseGetController.Details(1).Value as ExpenseEntity;
+            var result = expenseData.Query(1);
             Assert.AreEqual(result, expenseEntity);
         }
 
@@ -249,16 +250,16 @@ namespace YNAET.Tests
 
                 new ExpenseEntity
                 {
-                Id = 2,
-                Payee = "Amazon",
-                Amount = 22.00M,
-                Category = "Popcorn",
-                Account = "Wells Fargo",
+                Id = 3,
+                Payee = "Alamo Drafthouse",
+                Amount = 7.00M,
+                Category = "Fun Money",
+                Account = "Middleburg Bank",
                 Date = DateTime.Today,
-                Repeat = true,
+                Repeat = false,
                 Impulse = false,
-                Memo = "Pop Secret Homestyle",
-                ColorCode = "Grey"
+                Memo = "Captain Marvel Tickets",
+                ColorCode = "Red"
                 }
              };
             
@@ -271,11 +272,12 @@ namespace YNAET.Tests
             nhibernateSession.Setup(x => x.OpenSession())
                 .Returns(() => session.Object);
 
-            var mockExpenseGetController = new ExpensesGetController(nhibernateSession.Object);
+            var expenseData = new ExpenseQueryService(nhibernateSession.Object);
 
-            var result = mockExpenseGetController.Execute() as JsonResult;
+            var result = expenseData.QueryAll() as JsonResult;
             Assert.AreEqual(expenseEntityList, result.Value);
 
         }
+        
     }
 }
