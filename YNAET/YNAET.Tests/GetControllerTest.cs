@@ -45,10 +45,9 @@ namespace YNAET.Tests
                 .Returns(() => session.Object);
 
             var expenseData = new ExpenseQueryService(nhibernateSession.Object);
-
-            JsonResult expectedType = new JsonResult(expenseEntity);
+            
             var result = expenseData.Query(1);
-            Assert.IsInstanceOf(expectedType.GetType(), result);
+            Assert.IsInstanceOf(expenseEntity.GetType(), result);
 
         }
 
@@ -274,8 +273,8 @@ namespace YNAET.Tests
 
             var expenseData = new ExpenseQueryService(nhibernateSession.Object);
 
-            var result = expenseData.QueryAll() as JsonResult;
-            Assert.AreEqual(expenseEntityList, result.Value);
+            var result = expenseData.QueryAll();
+            Assert.AreEqual(expenseEntityList, result);
 
         }
         

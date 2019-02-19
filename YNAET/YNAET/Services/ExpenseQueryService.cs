@@ -14,12 +14,12 @@ namespace YNAET.Services
     }
     public class ExpenseQueryService : IExpenseQueryService
     {
-        private readonly INHibernateSession _inHibernateSession;
+        private INHibernateSession _inHibernateSession;
         private ExpenseEntity _expense;
 
         public ExpenseQueryService(INHibernateSession nHibernateSession)
         {
-            nHibernateSession = _inHibernateSession;
+            _inHibernateSession = nHibernateSession;
         }
 
         public IList<ExpenseEntity> QueryAll()
