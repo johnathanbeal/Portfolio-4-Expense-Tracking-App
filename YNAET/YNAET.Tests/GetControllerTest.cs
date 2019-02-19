@@ -47,8 +47,8 @@ namespace YNAET.Tests
             var expenseData = new ExpenseQueryService(nhibernateSession.Object);
             
             var result = expenseData.Query(1);
-            Assert.IsInstanceOf(expenseEntity.GetType(), result);
-
+            JsonResult expectedType = new JsonResult(expenseEntity);
+            Assert.IsInstanceOf(expectedType.GetType(), result);
         }
 
         [Test]
@@ -146,8 +146,8 @@ namespace YNAET.Tests
 
             var expenseData = new ExpenseQueryService(nhibernateSession.Object);
 
-            var result = expenseData.Query(1);
-            Assert.AreEqual(result, expenseEntity);
+            var result = expenseData.Query(1) as JsonResult;
+            Assert.AreEqual(result.Value, expenseEntity);
         }
 
         [Test]
@@ -178,8 +178,8 @@ namespace YNAET.Tests
 
             var expenseData = new ExpenseQueryService(nhibernateSession.Object);
 
-            var result = expenseData.Query(1);
-            Assert.AreSame(result, expenseEntity);
+            var result = expenseData.Query(1) as JsonResult;
+            Assert.AreSame(result.Value, expenseEntity);
         }
 
         [Test]
@@ -210,8 +210,8 @@ namespace YNAET.Tests
 
             var expenseData = new ExpenseQueryService(nhibernateSession.Object);
 
-            var result = expenseData.Query(1);
-            Assert.AreEqual(result, expenseEntity);
+            var result = expenseData.Query(1) as JsonResult;
+            Assert.AreEqual(result.Value, expenseEntity);
         }
 
         [Test]
@@ -273,8 +273,8 @@ namespace YNAET.Tests
 
             var expenseData = new ExpenseQueryService(nhibernateSession.Object);
 
-            var result = expenseData.QueryAll();
-            Assert.AreEqual(expenseEntityList, result);
+            var result = expenseData.QueryAll() as JsonResult;
+            Assert.AreEqual(expenseEntityList, result.Value);
 
         }
         

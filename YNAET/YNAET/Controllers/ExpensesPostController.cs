@@ -5,48 +5,25 @@ using YNAET.Nibernate;
 using ISession = NHibernate.ISession;
 using YNAET.Models;
 using YNAET.Entities;
+using YNAET.Services;
 
 namespace YNAET.Controllers
 {
     public class ExpensesPostController : Controller
     {
-        private readonly INHibernateSession _inHibernateSession;
+        private readonly IExpenseCreationService _iExpenseCreationService;
+        private readonly ExpenseCreationService _expenseCreationService;
 
-        public ExpensesPostController(INHibernateSession inHibernateSession)
+
+        public ExpensesPostController(IExpenseCreationService iExpenseCreationService)
         {
-            _inHibernateSession = inHibernateSession;
+            _iExpenseCreationService = iExpenseCreationService;
         }
         
         [HttpPost("api/expenses")]
         public ActionResult Post([FromBody]ExpenseInputModel expenseInputModels) 
         {
-            try
-            {
-                var expenseEntity = new ExpenseEntity();
-                expenseEntity.Account = expenseInputModels.Account;
-                expenseEntity.Amount = expenseInputModels.Amount;
-                expenseEntity.Category = expenseInputModels.Category;
-                expenseEntity.ColorCode = expenseInputModels.ColorCode;
-                expenseEntity.Date = expenseInputModels.Date;
-                expenseEntity.Impulse = expenseInputModels.Impulse;
-                expenseEntity.Memo = expenseInputModels.Memo;
-                expenseEntity.Payee = expenseInputModels.Payee;
-                expenseEntity.Repeat = expenseInputModels.Repeat;
-
-                using (ISession session = _inHibernateSession.OpenSession())
-                {
-                    using (ITransaction transaction = session.BeginTransaction())
-                    {
-                        session.Save(expenseEntity);
-                        transaction.Commit();
-                    }
-                }
-                return new JsonResult(expenseEntity);
-            }
-            catch (Exception e)
-            {
-                return new JsonResult(e);
-            }
+            return _iExpenseCreationService.Post(expenseInputModels);
 
         }
     }

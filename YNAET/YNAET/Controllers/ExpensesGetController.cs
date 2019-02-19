@@ -11,28 +11,29 @@ namespace YNAET.Controllers
     public class ExpensesGetController : Controller
     {
         private readonly INHibernateSession _inHibernateSession;
+        private readonly IExpenseQueryService _iExpenseQueryService;
 
-        public ExpensesGetController()
+        public ExpensesGetController(IExpenseQueryService iExpenseQueryService)
         {
+            _iExpenseQueryService = iExpenseQueryService;
         }
        
         [HttpGet("api/expenses")]
         public IActionResult Execute()
         {
-            IList<ExpenseEntity> expenses;
+            //IList<ExpenseEntity> expenses;
 
-            using (ISession session = _inHibernateSession.OpenSession())
-            {
-                expenses = session.Query<ExpenseEntity>().ToList();
-            }
-            return new JsonResult(expenses);
+            //using (ISession session = _inHibernateSession.OpenSession())
+            //{
+            //    expenses = session.Query<ExpenseEntity>().ToList();
+            //}
+            return _iExpenseQueryService.QueryAll();
         }
 
         [HttpGet("api/expenses/{id}")]
-        public ExpenseEntity Details(int id)
+        public IActionResult Details(int id)
         {
-            IExpenseQueryService expenseData = new ExpenseQueryService(_inHibernateSession);
-            return expenseData.Query(id);
+            return _iExpenseQueryService.Query(id);
 
         }
         

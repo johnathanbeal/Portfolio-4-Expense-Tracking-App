@@ -10,7 +10,8 @@ namespace YNAET.Services
 {
     public interface IExpenseQueryService
     {
-        ExpenseEntity Query(int id);
+        IActionResult Query(int id);
+        IActionResult QueryAll();
     }
     public class ExpenseQueryService : IExpenseQueryService
     {
@@ -22,7 +23,7 @@ namespace YNAET.Services
             _inHibernateSession = nHibernateSession;
         }
 
-        public IList<ExpenseEntity> QueryAll()
+        public IActionResult QueryAll()
         {
             IList<ExpenseEntity> expenses;
 
@@ -30,17 +31,17 @@ namespace YNAET.Services
             {
                 expenses = session.Query<ExpenseEntity>().ToList();
             }
-            return expenses;
+            return new JsonResult(expenses);
         }
 
-        public ExpenseEntity Query(int id)
+        public IActionResult Query(int id)
         {
             using (ISession session = _inHibernateSession.OpenSession())
             {
                 _expense = session.Query<ExpenseEntity>().Where(b => b.Id == id).FirstOrDefault();
             }
 
-            return _expense;
+            return new JsonResult(_expense);
         }
     }
 }
