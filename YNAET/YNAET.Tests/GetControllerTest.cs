@@ -19,7 +19,7 @@ namespace YNAET.Tests
     {
        
         [Test]
-        public void Should_Get_Return_Type_Of_JsonResult()
+        public void Should_Get_Return_Type_Of_ExpenseEntity()
         {
             var expenseEntity = new ExpenseEntity()
             {
@@ -47,8 +47,7 @@ namespace YNAET.Tests
             var expenseData = new ExpenseQueryService(nhibernateSession.Object);
             
             var result = expenseData.Query(1);
-            JsonResult expectedType = new JsonResult(expenseEntity);
-            Assert.IsInstanceOf(expectedType.GetType(), result);
+            Assert.IsInstanceOf(expenseEntity.GetType(), result);
         }
 
         [Test]
@@ -146,8 +145,8 @@ namespace YNAET.Tests
 
             var expenseData = new ExpenseQueryService(nhibernateSession.Object);
 
-            var result = expenseData.Query(1) as JsonResult;
-            Assert.AreEqual(result.Value, expenseEntity);
+            var result = expenseData.Query(1);
+            Assert.AreEqual(result, expenseEntity);
         }
 
         [Test]
@@ -178,8 +177,8 @@ namespace YNAET.Tests
 
             var expenseData = new ExpenseQueryService(nhibernateSession.Object);
 
-            var result = expenseData.Query(1) as JsonResult;
-            Assert.AreSame(result.Value, expenseEntity);
+            var result = expenseData.Query(1);
+            Assert.AreSame(result, expenseEntity);
         }
 
         [Test]
@@ -210,8 +209,8 @@ namespace YNAET.Tests
 
             var expenseData = new ExpenseQueryService(nhibernateSession.Object);
 
-            var result = expenseData.Query(1) as JsonResult;
-            Assert.AreEqual(result.Value, expenseEntity);
+            var result = expenseData.Query(1);
+            Assert.AreEqual(result, expenseEntity);
         }
 
         [Test]
@@ -273,8 +272,8 @@ namespace YNAET.Tests
 
             var expenseData = new ExpenseQueryService(nhibernateSession.Object);
 
-            var result = expenseData.QueryAll() as JsonResult;
-            Assert.AreEqual(expenseEntityList, result.Value);
+            var result = expenseData.QueryAll();
+            Assert.AreEqual(expenseEntityList, result);
 
         }
         
