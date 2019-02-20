@@ -23,10 +23,8 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
-    },
-
-    "configurations": {
-      "skipFiles" : "vendor.bundle.js"
     }
+
+    
   }
 }
