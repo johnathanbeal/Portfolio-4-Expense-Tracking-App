@@ -35,9 +35,13 @@ export class ReceiptComponent implements OnInit {
 
   ngOnInit() {
     this.expenseQueryService.getAllExpenses()
-      .subscribe(xp => this.expenses = xp);
+      .subscribe(xp =>
+      {
+        this.expenses = xp
+        this.expense = this.expenses[0];
+      });
 
-    this.expense = this.expenses[0];
+    
 
     this.accounts = this.sharedDataService.getAccounts();
     this.colorCodes = this.sharedDataService.getColorCodes();

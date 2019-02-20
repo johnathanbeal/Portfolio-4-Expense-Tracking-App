@@ -17,9 +17,9 @@ namespace YNAET.Services
 
     public class ExpenseCreationService : IExpenseCreationService
     {
-        private readonly INHibernateSession _inHibernateSession;
+        private INHibernateSession _inHibernateSession;
 
-        ExpenseCreationService(INHibernateSession inHibernateSession)
+        public ExpenseCreationService(INHibernateSession inHibernateSession)
         {
             _inHibernateSession = inHibernateSession;
         }

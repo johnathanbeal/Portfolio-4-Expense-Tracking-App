@@ -10,38 +10,38 @@ namespace YNAET.Services
 {
     public interface IExpenseQueryService
     {
-        IActionResult Query(int id);
-        IActionResult QueryAll();
+        
+        List<ExpenseEntity> QueryAll();
+        ExpenseEntity Query(int id);
     }
     public class ExpenseQueryService : IExpenseQueryService
     {
         private INHibernateSession _inHibernateSession;
-        private ExpenseEntity _expense;
 
         public ExpenseQueryService(INHibernateSession nHibernateSession)
         {
             _inHibernateSession = nHibernateSession;
         }
 
-        public IActionResult QueryAll()
+        public List<ExpenseEntity> QueryAll()
         {
-            IList<ExpenseEntity> expenses;
+            List<ExpenseEntity> expenses;
 
             using (ISession session = _inHibernateSession.OpenSession())
             {
                 expenses = session.Query<ExpenseEntity>().ToList();
             }
-            return new JsonResult(expenses);
+            return expenses;
         }
 
-        public IActionResult Query(int id)
+        public ExpenseEntity Query(int id)
         {
             using (ISession session = _inHibernateSession.OpenSession())
             {
-                _expense = session.Query<ExpenseEntity>().Where(b => b.Id == id).FirstOrDefault();
-            }
+                var expense = session.Query<ExpenseEntity>().Where(b => b.Id == id).FirstOrDefault();
 
-            return new JsonResult(_expense);
+                return expense;
+            }
         }
     }
 }

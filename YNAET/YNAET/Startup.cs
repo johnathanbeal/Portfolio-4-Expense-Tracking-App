@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using YNAET.Nibernate;
+using YNAET.Services;
 
 namespace YNAET
 {
@@ -38,6 +39,8 @@ namespace YNAET
             });
 
             services.AddScoped<INHibernateSession, NHibernateSession>();
+            services.AddScoped<IExpenseQueryService, ExpenseQueryService>();
+            services.AddScoped<IExpenseCreationService, ExpenseCreationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
