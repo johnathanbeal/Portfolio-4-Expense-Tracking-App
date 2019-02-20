@@ -12,7 +12,6 @@ namespace YNAET.Controllers
     public class ExpensesPostController : Controller
     {
         private readonly IExpenseCreationService _iExpenseCreationService;
-        private readonly ExpenseCreationService _expenseCreationService;
 
 
         public ExpensesPostController(IExpenseCreationService iExpenseCreationService)
@@ -21,9 +20,10 @@ namespace YNAET.Controllers
         }
         
         [HttpPost("api/expenses")]
-        public ActionResult Post([FromBody]ExpenseInputModel expenseInputModels) 
+        public IActionResult Post([FromBody]ExpenseInputModel expenseInputModels) 
         {
-            return _iExpenseCreationService.Post(expenseInputModels);
+            var expense = _iExpenseCreationService.Post(expenseInputModels);
+            return expense;
 
         }
     }

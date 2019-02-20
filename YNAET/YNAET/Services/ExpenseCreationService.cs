@@ -12,7 +12,7 @@ namespace YNAET.Services
     
     public interface IExpenseCreationService
     {
-        ActionResult Post([FromBody]ExpenseInputModel expenseInputModels);
+        IActionResult Post([FromBody]ExpenseInputModel expenseInputModels);
     }
 
     public class ExpenseCreationService : IExpenseCreationService
@@ -24,7 +24,7 @@ namespace YNAET.Services
             _inHibernateSession = inHibernateSession;
         }
 
-        public ActionResult Post([FromBody]ExpenseInputModel expenseInputModels)
+        public IActionResult Post(ExpenseInputModel expenseInputModels)
         {
             try
             {
