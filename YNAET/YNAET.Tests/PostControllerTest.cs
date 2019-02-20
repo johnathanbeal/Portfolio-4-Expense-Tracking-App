@@ -17,7 +17,7 @@ namespace YNAET.Tests
     public class PostControllerTest
     {
         [Test]
-        public void Added_Expense_Should_Saves()
+        public void Added_Expense_Should_Save()
         {
             var expenseInput = new ExpenseInputModel()
             {
@@ -31,7 +31,6 @@ namespace YNAET.Tests
                 Impulse = true,
                 Memo = "Dry Erase Paper Sheets",
                 ColorCode = "Blue"
-
             };
 
             var transaction = new Mock<ITransaction>();
@@ -39,11 +38,12 @@ namespace YNAET.Tests
             session.Setup(t => t.BeginTransaction())
                 .Returns(transaction.Object);
 
-
-
             var nhibernateSession = new Mock<INHibernateSession>();
             nhibernateSession.Setup(x => x.OpenSession())
                 .Returns(() => session.Object);
+
+            session.Setup(x => x.Save(expenseInput))
+                .Returns(() => expenseInput);
 
             var expenseCreationService = new ExpenseCreationService(nhibernateSession.Object);
             var post = expenseCreationService.Post(expenseInput);
@@ -82,8 +82,6 @@ namespace YNAET.Tests
 
             var expenseCreationService = new ExpenseCreationService(nhibernateSession.Object);
             var post = expenseCreationService.Post(expenseInput);
-
-            session.Verify(x => x.Save(expenseInput), Times.Once);
 
             transaction.Verify(x => x.Commit(), Times.Once);
 
