@@ -17,3 +17,4 @@ C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET.Tests\bin\Debug\netcoreapp2.2\YNAET.T
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET.Tests\bin\Debug\netcoreapp2.2\YNAET.Tests.pdb
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET.Tests\obj\Debug\netcoreapp2.2\YNAET.Tests.dll
 C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET.Tests\obj\Debug\netcoreapp2.2\YNAET.Tests.pdb
+C:\Git\YouNeedAnExpenseTracker\YNAET\YNAET.Tests\bin\Debug\netcoreapp2.2\hibernate.cfg.xml
