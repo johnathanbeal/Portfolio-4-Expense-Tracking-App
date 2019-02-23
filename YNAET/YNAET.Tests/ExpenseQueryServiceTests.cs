@@ -1,23 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Moq;
-using NHibernate;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using Moq;
+using NHibernate;
 using System.Linq;
-using System.Text;
-using YNAET.Controllers;
 using YNAET.Entities;
-using YNAET.Models;
 using YNAET.Nibernate;
 using YNAET.Services;
 
 namespace YNAET.Tests
 {
     [TestFixture]
-    public class GetControllerTest
+    public class ExpenseQueryServiceTests
     {
-       
+
         [Test]
         public void Should_Get_Return_Type_Of_ExpenseEntity()
         {
@@ -38,14 +34,14 @@ namespace YNAET.Tests
 
             var session = new Mock<ISession>();
             session.Setup(x => x.Query<ExpenseEntity>())
-                .Returns(() => new List<ExpenseEntity>{ expenseEntity }.AsQueryable());
+                .Returns(() => new List<ExpenseEntity> { expenseEntity }.AsQueryable());
 
             var nhibernateSession = new Mock<INHibernateSession>();
             nhibernateSession.Setup(x => x.OpenSession())
                 .Returns(() => session.Object);
 
             var expenseData = new ExpenseQueryService(nhibernateSession.Object);
-            
+
             var result = expenseData.Query(1);
             Assert.IsInstanceOf(expenseEntity.GetType(), result);
         }
@@ -260,11 +256,11 @@ namespace YNAET.Tests
                 ColorCode = "Red"
                 }
              };
-            
+
 
             var session = new Mock<ISession>();
             session.Setup(x => x.Query<ExpenseEntity>())
-                .Returns(() => new List<ExpenseEntity>(expenseEntityList) {  }.AsQueryable());
+                .Returns(() => new List<ExpenseEntity>(expenseEntityList) { }.AsQueryable());
 
             var nhibernateSession = new Mock<INHibernateSession>();
             nhibernateSession.Setup(x => x.OpenSession())
@@ -276,6 +272,5 @@ namespace YNAET.Tests
             Assert.AreEqual(expenseEntityList, result);
 
         }
-        
     }
 }

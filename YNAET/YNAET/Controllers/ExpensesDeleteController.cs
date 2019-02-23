@@ -3,41 +3,44 @@ using NHibernate;
 using System.Linq;
 using YNAET.Entities;
 using YNAET.Nibernate;
+using YNAET.Services;
 using ISession = NHibernate.ISession;
 
 namespace YNAET.Controllers
 {
     public class ExpensesDeleteController : Controller
     {
-        private readonly INHibernateSession _inHibernateSession;
+        private readonly IExpenseDeletionService _iExpenseDeletionService;
 
-        public ExpensesDeleteController(INHibernateSession iNHibernateSession)
+        public ExpensesDeleteController(IExpenseDeletionService iExpenseDeletionService)
         {
-            _inHibernateSession = iNHibernateSession;
+            _iExpenseDeletionService = iExpenseDeletionService;
         }
 
         [HttpDelete("api/expenses/{id}")]
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
-            ExpenseEntity expense = new ExpenseEntity();
-            using (ISession session = _inHibernateSession.OpenSession())
-            {
-                expense = session.Query<ExpenseEntity>().
-                    Where(b => b.Id == id).FirstOrDefault();
-                if (expense == null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    using (ITransaction transaction = session.BeginTransaction())
-                    {
-                        session.Delete(expense);
-                        transaction.Commit();
-                    }                      
-                }
-            }
-            return new OkResult();
+            //ExpenseEntity expense = new ExpenseEntity();
+            //using (ISession session = _inHibernateSession.OpenSession())
+            //{
+            //    expense = session.Query<ExpenseEntity>().
+            //        Where(b => b.Id == id).FirstOrDefault();
+            //    if (expense == null)
+            //    {
+            //        return NotFound();
+            //    }
+            //    else
+            //    {
+            //        using (ITransaction transaction = session.BeginTransaction())
+            //        {
+            //            session.Delete(expense);
+            //            transaction.Commit();
+            //        }                      
+            //    }
+            //}
+            //return new OkResult();
+            return _iExpenseDeletionService.Drop(id);
+
         }
     }
 }
