@@ -21,6 +21,7 @@ namespace YNAET.Tests
         private Mock<ExpenseEntity> _deleteExpense;
         private Random _random;
         private int _randomId;
+        
 
         [SetUp]
         public void Setup()
@@ -28,50 +29,50 @@ namespace YNAET.Tests
             _random = new Random();
             _randomId = _random.Next(1, 3);
 
-            //var expenseEntityList = new List<ExpenseEntity>()
-            //{
-            //    new ExpenseEntity()
-            //    {
-            //        Id = 1,
-            //        Payee = "Toys R Us",
-            //        Amount = 100.00M,
-            //        Category = "Fun Money",
-            //        Account = "Suntrust",
-            //        Date = DateTime.Today,
-            //        Repeat = false,
-            //        Impulse = true,
-            //        Memo = "He-man Toys",
-            //        ColorCode = "Pink"
-            //    },
+            var expenseEntityList = new List<ExpenseEntity>()
+            {
+                new ExpenseEntity()
+                {
+                    Id = 1,
+                    Payee = "Toys R Us",
+                    Amount = 100.00M,
+                    Category = "Fun Money",
+                    Account = "Suntrust",
+                    Date = DateTime.Today,
+                    Repeat = false,
+                    Impulse = true,
+                    Memo = "He-man Toys",
+                    ColorCode = "Pink"
+                },
 
-            //    new ExpenseEntity
-            //    {
-            //        Id = 2,
-            //        Payee = "Amazon",
-            //        Amount = 22.00M,
-            //        Category = "Popcorn",
-            //        Account = "Wells Fargo",
-            //        Date = DateTime.Today,
-            //        Repeat = true,
-            //        Impulse = false,
-            //        Memo = "Pop Secret Homestyle",
-            //        ColorCode = "Grey"
-            //    },
+                new ExpenseEntity
+                {
+                    Id = 2,
+                    Payee = "Amazon",
+                    Amount = 22.00M,
+                    Category = "Popcorn",
+                    Account = "Wells Fargo",
+                    Date = DateTime.Today,
+                    Repeat = true,
+                    Impulse = false,
+                    Memo = "Pop Secret Homestyle",
+                    ColorCode = "Grey"
+                },
 
-            //    new ExpenseEntity
-            //    {
-            //    Id = 3,
-            //    Payee = "Alamo Drafthouse",
-            //    Amount = 7.00M,
-            //    Category = "Fun Money",
-            //    Account = "Middleburg Bank",
-            //    Date = DateTime.Today,
-            //    Repeat = false,
-            //    Impulse = false,
-            //    Memo = "Captain Marvel Tickets",
-            //    ColorCode = "Red"
-            //    }
-            // };
+                new ExpenseEntity
+                {
+                Id = 3,
+                Payee = "Alamo Drafthouse",
+                Amount = 7.00M,
+                Category = "Fun Money",
+                Account = "Middleburg Bank",
+                Date = DateTime.Today,
+                Repeat = false,
+                Impulse = false,
+                Memo = "Captain Marvel Tickets",
+                ColorCode = "Red"
+                }
+             };
 
             //var expenseEntity = new ExpenseEntity()
             //{
@@ -140,6 +141,23 @@ namespace YNAET.Tests
             _sut.Drop(1);
 
             _session.Verify(x => x.Delete(It.IsAny<ExpenseEntity>()), Times.Once);
+        }
+
+        [Test]
+        public void ExpenseWithInvalidIdShouldReturnNotFound()
+        {
+            var result = _sut.Drop(1000000);
+            var notFoundResult = new Microsoft.AspNetCore.Mvc.NotFoundResult();
+            Assert.IsInstanceOf(notFoundResult.GetType(), result);
+        }
+
+        [Test]
+        public void ExpenseValidIdShouldReturnOkResult()
+        {
+
+            var result = _sut.Drop(1);
+            var okResult = new OkResult();
+            Assert.IsInstanceOf(okResult.GetType(), result);
         }
     }
 }
