@@ -11,7 +11,7 @@ namespace YNAET.Services
         IActionResult Drop(int it);
     }
 
-    public class ExpenseDeletionService : Controller, IExpenseDeletionService
+    public class ExpenseDeletionService : IExpenseDeletionService
     {
         private readonly INHibernateSession _inHibernateSession;
 
@@ -29,7 +29,7 @@ namespace YNAET.Services
                     Where(b => b.Id == id).FirstOrDefault();
                 if (expense == null)
                 {
-                    return NotFound();
+                    return new NotFoundResult();
                 }
                 else
                 {
