@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using NHibernate;
+﻿using NHibernate;
+using System;
 using System.Linq;
 using YNAET.Entities;
 using YNAET.Nibernate;
@@ -8,7 +8,7 @@ namespace YNAET.Services
 {
     public interface IExpenseDeletionService
     {
-        IActionResult Drop(int it);
+        void Drop(int it);
     }
 
     public class ExpenseDeletionService : IExpenseDeletionService
@@ -20,7 +20,7 @@ namespace YNAET.Services
             _inHibernateSession = iNHibernateSession;
         }
 
-        public IActionResult Drop(int id)
+        public void Drop(int id)
         {
             //ExpenseEntity expense = new ExpenseEntity();
             using (ISession session = _inHibernateSession.OpenSession())
@@ -29,7 +29,7 @@ namespace YNAET.Services
                     Where(b => b.Id == id).FirstOrDefault();
                 if (expense == null)
                 {
-                    return new NotFoundResult();
+                    throw new NotFoundException();
                 }
                 else
                 {
@@ -40,7 +40,14 @@ namespace YNAET.Services
                     }
                 }
             }
-            return new OkResult();
+        }
+    }
+
+    public class NotFoundException : Exception
+    {
+        public NotFoundException()
+        {
+
         }
     }
 }

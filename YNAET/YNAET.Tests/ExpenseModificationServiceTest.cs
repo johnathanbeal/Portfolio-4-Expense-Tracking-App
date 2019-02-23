@@ -79,7 +79,7 @@ namespace YNAET.Tests
                 .Returns(() => _session.Object);
 
             _expense = new Mock<ExpenseEntity>();
-            _expense.Setup(ee => ee.Payee).Returns("Sams Club");
+            _expense.SetupGet(m => m.Payee).Returns("Someone Nice");
             _expense.Setup(ee => ee.Amount).Returns(6.66m);
             _expense.Setup(ee => ee.Date).Returns(System.DateTime.Today);
             _expense.Setup(ee => ee.Account).Returns("Middleburg Bank");
@@ -96,10 +96,10 @@ namespace YNAET.Tests
         public void ExpenseShouldChange()
         {
             _sut.Modify(1, expenseInput);
-            //DOESN'T WORK
-            //_expense.Verify(foo => foo.Payee == "Sams Club");
-
-            _expense.VerifySet(foo => foo.Payee != "Sams Club");
+            
+            _expense.VerifySet(foo => foo.Payee == "Sams Club");
         }
     }
+
+
 }

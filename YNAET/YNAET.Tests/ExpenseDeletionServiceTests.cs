@@ -57,14 +57,11 @@ namespace YNAET.Tests
                 .Returns(() => _session.Object);
             
             _sut = new ExpenseDeletionService(_nhibernateSession.Object);
-
         }
        
         [Test]
         public void DropExpenseShouldCommit()
-        {
-            
-            
+        {           
             _sut.Drop(1);
 
             _transaction.Verify(x => x.Commit(), Times.Once);
@@ -72,30 +69,10 @@ namespace YNAET.Tests
 
         [Test]
         public void DropExpenseShouldSave()
-        {
-           
+        {           
             _sut.Drop(1);
 
             _session.Verify(x => x.Delete(It.IsAny<ExpenseEntity>()), Times.Once);
         }
-
-        [Test]
-        public void ExpenseWithInvalidIdShouldReturnNotFound()
-        {
-            var result = _sut.Drop(1000000);
-            var notFoundResult = new Microsoft.AspNetCore.Mvc.NotFoundResult();
-            Assert.IsInstanceOf(notFoundResult.GetType(), result);
-        }
-
-        [Test]
-        public void ExpenseValidIdShouldReturnOkResult()
-        {
-
-            var result = _sut.Drop(1);
-            var okResult = new OkResult();
-            Assert.IsInstanceOf(okResult.GetType(), result);
-        }
-
-
     }
 }
