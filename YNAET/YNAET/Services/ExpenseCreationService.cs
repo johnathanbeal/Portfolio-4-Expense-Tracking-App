@@ -24,7 +24,7 @@ namespace YNAET.Services
             _inHibernateSession = inHibernateSession;
         }
 
-        public IActionResult Create(ExpenseInputModel expenseInputModels)
+        public IActionResult Create([FromBody]ExpenseInputModel expenseInputModels)
         {
             try
             {
