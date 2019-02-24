@@ -22,8 +22,7 @@ namespace YNAET.Services
         }
 
 
-        [HttpPut("api/expenses/{id}")]
-        public ActionResult Modify(int id, [FromBody]ExpenseInputModel expenseInputModel)
+        public ExpenseEntity Modify(int id, [FromBody]ExpenseInputModel expenseInputModel)
         {
             using (ISession session = _inHibernateSession.OpenSession())
             {
@@ -43,10 +42,9 @@ namespace YNAET.Services
                 {
                     session.SaveOrUpdate(expenseEntity);
                     transaction.Commit();
+                    return expenseEntity;
                 }
             }
-
-            return new OkResult();
         }
     }
 }

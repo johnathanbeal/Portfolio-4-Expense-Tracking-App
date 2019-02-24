@@ -24,7 +24,8 @@ namespace YNAET.Controllers
         [HttpPut("api/expenses/{id}")]
         public ActionResult Edit(int id, [FromBody]ExpenseInputModel expenseInputModel)
         {
-            return _expenseModificationService.Modify(id, expenseInputModel);
+            var expense = _expenseModificationService.Modify(id, expenseInputModel);
+            return new JsonResult(expense);
         }
     }
 }

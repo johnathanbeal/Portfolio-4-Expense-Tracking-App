@@ -46,38 +46,6 @@ namespace YNAET.Tests
             Assert.IsInstanceOf(expenseEntity.GetType(), result);
         }
 
-        [Test]
-        public void Should_Not_Have_Null_Type()
-        {
-            var expenseEntity = new ExpenseEntity()
-            {
-                Id = 1,
-                Payee = "Toys R Us",
-                Amount = 100.00M,
-                Category = "Fun Money",
-                Account = "Suntrust",
-                Date = DateTime.Today,
-                Repeat = false,
-                Impulse = true,
-                Memo = "He-man Toys",
-                ColorCode = "Pink"
-
-            };
-
-            var session = new Mock<ISession>();
-            session.Setup(x => x.Query<ExpenseEntity>())
-                .Returns(() => new List<ExpenseEntity> { expenseEntity }.AsQueryable());
-
-            var nhibernateSession = new Mock<INHibernateSession>();
-            nhibernateSession.Setup(x => x.OpenSession())
-                .Returns(() => session.Object);
-
-            var expenseData = new ExpenseQueryService(nhibernateSession.Object);
-
-            var result = expenseData.Query(1);
-            Assert.IsNotNull(result);
-
-        }
 
         [Test]
         public void Should_Not_Have_Null_Value()
