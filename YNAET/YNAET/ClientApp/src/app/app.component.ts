@@ -14,7 +14,6 @@ import { ExpenseModificationService } from './expenseModification.service';
 export class AppComponent implements OnInit{
   title = 'YNAET: You Need An Expense Tracker';
 
-
   //accounts = ['Suntrust', 'Middleburg', 'Wells Fargo'];
 
   //colorCodes = ['Grey', 'Black', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'Pink', 'Cornflower-Blue'];
