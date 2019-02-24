@@ -20,9 +20,9 @@ namespace YNAET.Controllers
         }
         
         [HttpPost("api/expenses")]
-        public IActionResult Post([FromBody]ExpenseInputModel expenseInputModels) 
+        public IActionResult Post([FromBody]ExpenseInputModel ExpenseInputModel) 
         {
-            var expense = _iExpenseCreationService.Create(expenseInputModels);
+            var expense = _iExpenseCreationService.Create(ExpenseInputModel);
             return expense;
 
         }

@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using YNAET.Entities;
 using YNAET.Nibernate;
+using YNAET.Exceptions;
 
 namespace YNAET.Services
 {
@@ -22,7 +23,6 @@ namespace YNAET.Services
 
         public void Drop(int id)
         {
-            //ExpenseEntity expense = new ExpenseEntity();
             using (ISession session = _inHibernateSession.OpenSession())
             {
                 var expense = session.Query<ExpenseEntity>().
@@ -43,11 +43,5 @@ namespace YNAET.Services
         }
     }
 
-    public class NotFoundException : Exception
-    {
-        public NotFoundException()
-        {
-
-        }
-    }
+    
 }
