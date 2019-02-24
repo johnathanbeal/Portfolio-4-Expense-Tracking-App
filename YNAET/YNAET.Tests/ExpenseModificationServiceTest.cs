@@ -129,8 +129,8 @@ namespace YNAET.Tests
                 .Returns(() => _session.Object);
 
             _expense = new Mock<ExpenseEntity>();
+            _expense.Setup(ee => ee.Account).Returns("Wells Fargo");
             _expense.SetupGet(m => m.Payee).Returns("Someone Nice");
-            _expense.Setup(ee => ee.Amount).Returns(6.66m);
             _expense.Setup(ee => ee.Date).Returns(System.DateTime.Today);
             _expense.Setup(ee => ee.Account).Returns("Middleburg Bank");
             _expense.Setup(ee => ee.Repeat).Returns(true);
@@ -173,6 +173,15 @@ namespace YNAET.Tests
             var expenseResult = _sut.Modify(1, expenseInput);
 
             Assert.IsNotNull(expenseResult);
+        }
+
+        [Test]
+        public void Modified_Expense_Should_Have_Different_Account()
+        {
+
+            _sut.Modify(1, expenseInput);
+            _expense.Verify(e => e.Account == "Wells Fargo");
+            _expense.VerifySet(e => e.Account = "Wells Fargo");
         }
 
     }
