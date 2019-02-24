@@ -28,6 +28,7 @@ namespace YNAET.Tests
         private int _randomId;
         private ExpenseInputModel expenseInput;
         private ExpenseEntity expenseEntity;
+        private ExpenseEntity modifiedExpense;
         private List<ExpenseEntity> expenseEntityList;
         private Mock<ExpenseEntity> _expense;
 
@@ -54,6 +55,21 @@ namespace YNAET.Tests
             };
 
             expenseEntity = new ExpenseEntity()
+            {
+                Id = 1,
+                Payee = "Toys R Us",
+                Amount = 100.00M,
+                Category = "Fun Money",
+                Account = "Suntrust",
+                Date = DateTime.Today,
+                Repeat = false,
+                Impulse = true,
+                Memo = "He-man Toys",
+                ColorCode = "Pink"
+
+            };
+
+            modifiedExpense = new ExpenseEntity()
             {
                 Id = 1,
                 Payee = "Toys R Us",
@@ -122,13 +138,14 @@ namespace YNAET.Tests
             //    .Returns(() => new List<ExpenseEntity> { expenseEntity }.AsQueryable());
 
             _session.Setup(x => x.Query<ExpenseEntity>())
-                 .Returns(() => new List<ExpenseEntity> { expenseEntity }.AsQueryable());
+                 .Returns(() => new List<ExpenseEntity> { modifiedExpense }.AsQueryable());
 
             _nhibernateSession = new Mock<INHibernateSession>();
             _nhibernateSession.Setup(x => x.OpenSession())
                 .Returns(() => _session.Object);
 
             _expense = new Mock<ExpenseEntity>();
+            //_session.Setup(It.Is<ExpenseEntity>(e => e.Account)).Returns("Wells Fargo");
             _expense.Setup(ee => ee.Account).Returns("Wells Fargo");
             _expense.SetupGet(m => m.Payee).Returns("Someone Nice");
             _expense.Setup(ee => ee.Date).Returns(System.DateTime.Today);
@@ -178,10 +195,33 @@ namespace YNAET.Tests
         [Test]
         public void Modified_Expense_Should_Have_Different_Account()
         {
+            var expenseInput = new ExpenseInputModel()
+            {
+                Id = 1,
+                Payee = "Amazon",
+                Amount = 100.00M,
+                Category = "Fun Money",
+                Account = "Suntrust",
+                Date = DateTime.Today,
+                Repeat = false,
+                Impulse = true,
+                Memo = "Closing Time",
+                ColorCode = "Pink"
+
+            };
 
             _sut.Modify(1, expenseInput);
-            _expense.Verify(e => e.Account == "Wells Fargo");
-            _expense.VerifySet(e => e.Account = "Wells Fargo");
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Payee == expenseInput.Payee)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Amount == expenseInput.Amount)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Account == expenseInput.Account)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Account == expenseInput.Account)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Category == expenseInput.Category)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Date == expenseInput.Date)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Repeat == expenseInput.Repeat)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Impulse == expenseInput.Impulse)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Memo == expenseInput.Memo)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.ColorCode == expenseInput.ColorCode)));
+
         }
 
     }
