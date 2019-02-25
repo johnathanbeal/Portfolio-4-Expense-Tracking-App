@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
-using System;
+using YNAET.Tests.TestData;
 using System.Linq;
 using YNAET.Models;
 using YNAET.Entities;
@@ -169,7 +169,7 @@ namespace YNAET.Tests
         }
 
         [Test]
-        public void Drop_Expense_Should_Commit()
+        public void Modify_Expense_Should_Commit()
         {
             _sut.Modify(1, expenseInput);
 
@@ -201,7 +201,7 @@ namespace YNAET.Tests
                 Payee = "Amazon",
                 Amount = 100.00M,
                 Category = "Fun Money",
-                Account = "Suntrust",
+                Account = TestData.TestData.RandomAccount(),
                 Date = DateTime.Today,
                 Repeat = false,
                 Impulse = true,
@@ -224,6 +224,297 @@ namespace YNAET.Tests
 
         }
 
+        [Test]
+        public void Modified_Expense_Should_Have_Different_Payee()
+        {
+            var expenseInput = new ExpenseInputModel()
+            {
+                Id = 1,
+                Payee = TestData.TestData.RandomAlphaNumericString(8),
+                Amount = 100.00M,
+                Category = "Fun Money",
+                Account = TestData.TestData.RandomAccount(),
+                Date = DateTime.Today,
+                Repeat = false,
+                Impulse = true,
+                Memo = "Closing Time",
+                ColorCode = "Pink"
+
+            };
+
+            _sut.Modify(1, expenseInput);
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Payee == expenseInput.Payee)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Amount == expenseInput.Amount)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Account == expenseInput.Account)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Account == expenseInput.Account)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Category == expenseInput.Category)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Date == expenseInput.Date)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Repeat == expenseInput.Repeat)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Impulse == expenseInput.Impulse)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Memo == expenseInput.Memo)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.ColorCode == expenseInput.ColorCode)));
+
+        }
+
+        [Test]
+        public void Modified_Expense_Should_Have_Different_Amount()
+        {
+            var expenseInput = new ExpenseInputModel()
+            {
+                Id = 1,
+                Payee = TestData.TestData.RandomAlphaNumericString(8),
+                Amount = TestData.TestData.RandomDecimal(),
+                Category = "Fun Money",
+                Account = TestData.TestData.RandomAccount(),
+                Date = DateTime.Today,
+                Repeat = false,
+                Impulse = true,
+                Memo = "Closing Time",
+                ColorCode = "Pink"
+
+            };
+
+            _sut.Modify(1, expenseInput);
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Payee == expenseInput.Payee)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Amount == expenseInput.Amount)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Account == expenseInput.Account)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Category == expenseInput.Category)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Date == expenseInput.Date)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Repeat == expenseInput.Repeat)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Impulse == expenseInput.Impulse)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Memo == expenseInput.Memo)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.ColorCode == expenseInput.ColorCode)));
+
+        }
+
+        [Test]
+        public void Modified_Expense_Should_Have_Different_Category()
+        {
+            var expenseInput = new ExpenseInputModel()
+            {
+                Id = 1,
+                Payee = TestData.TestData.RandomAlphaNumericString(8),
+                Amount = TestData.TestData.RandomDecimal(),
+                Category = TestData.TestData.RandomCategory(),
+                Account = TestData.TestData.RandomAccount(),
+                Date = DateTime.Today,
+                Repeat = false,
+                Impulse = true,
+                Memo = "Closing Time",
+                ColorCode = "Pink"
+
+            };
+
+            _sut.Modify(1, expenseInput);
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Payee == expenseInput.Payee)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Amount == expenseInput.Amount)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Account == expenseInput.Account)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Category == expenseInput.Category)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Date == expenseInput.Date)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Repeat == expenseInput.Repeat)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Impulse == expenseInput.Impulse)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Memo == expenseInput.Memo)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.ColorCode == expenseInput.ColorCode)));
+
+        }
+
+        [Test]
+        public void Modified_Expense_Should_Have_Different_Date()
+        {
+            var expenseInput = new ExpenseInputModel()
+            {
+                Id = 1,
+                Payee = TestData.TestData.RandomAlphaNumericString(8),
+                Amount = TestData.TestData.RandomDecimal(),
+                Category = TestData.TestData.RandomCategory(),
+                Account = TestData.TestData.RandomAccount(),
+                Date = DateTime.Today,
+                Repeat = false,
+                Impulse = true,
+                Memo = "Closing Time",
+                ColorCode = "Pink"
+
+            };
+
+            _sut.Modify(1, expenseInput);
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Payee == expenseInput.Payee)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Amount == expenseInput.Amount)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Account == expenseInput.Account)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Category == expenseInput.Category)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Date == expenseInput.Date)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Repeat == expenseInput.Repeat)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Impulse == expenseInput.Impulse)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Memo == expenseInput.Memo)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.ColorCode == expenseInput.ColorCode)));
+
+        }
+
+        [Test]
+        public void Modified_Expense_Should_Have_Different_Repeat()
+        {
+            var expenseInput = new ExpenseInputModel()
+            {
+                Id = 1,
+                Payee = TestData.TestData.RandomAlphaNumericString(8),
+                Amount = TestData.TestData.RandomDecimal(),
+                Category = TestData.TestData.RandomCategory(),
+                Account = TestData.TestData.RandomAccount(),
+                Date = DateTime.Today,
+                Repeat = TestData.TestData.RandomBoolean(),
+                Impulse = true,
+                Memo = "Closing Time",
+                ColorCode = "Pink"
+
+            };
+
+            _sut.Modify(1, expenseInput);
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Payee == expenseInput.Payee)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Amount == expenseInput.Amount)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Account == expenseInput.Account)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Category == expenseInput.Category)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Date == expenseInput.Date)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Repeat == expenseInput.Repeat)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Impulse == expenseInput.Impulse)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Memo == expenseInput.Memo)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.ColorCode == expenseInput.ColorCode)));
+
+        }
+
+        [Test]
+        public void Modified_Expense_Should_Have_Different_Impulse()
+        {
+            var expenseInput = new ExpenseInputModel()
+            {
+                Id = 1,
+                Payee = TestData.TestData.RandomAlphaNumericString(8),
+                Amount = TestData.TestData.RandomDecimal(),
+                Category = TestData.TestData.RandomCategory(),
+                Account = TestData.TestData.RandomAccount(),
+                Date = DateTime.Today,
+                Repeat = TestData.TestData.RandomBoolean(),
+                Impulse = TestData.TestData.RandomBoolean(),
+                Memo = "Closing Time",
+                ColorCode = "Pink"
+
+            };
+
+            _sut.Modify(1, expenseInput);
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Payee == expenseInput.Payee)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Amount == expenseInput.Amount)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Account == expenseInput.Account)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Category == expenseInput.Category)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Date == expenseInput.Date)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Repeat == expenseInput.Repeat)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Impulse == expenseInput.Impulse)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Memo == expenseInput.Memo)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.ColorCode == expenseInput.ColorCode)));
+
+        }
+
+        [Test]
+        public void Modified_Expense_Should_Have_Different_Memo()
+        {
+            var expenseInput = new ExpenseInputModel()
+            {
+                Id = 1,
+                Payee = TestData.TestData.RandomAlphaNumericString(8),
+                Amount = TestData.TestData.RandomDecimal(),
+                Category = TestData.TestData.RandomCategory(),
+                Account = TestData.TestData.RandomAccount(),
+                Date = DateTime.Today,
+                Repeat = TestData.TestData.RandomBoolean(),
+                Impulse = TestData.TestData.RandomBoolean(),
+                Memo = TestData.TestData.RandomAlphaNumericString(10)
+                + " " + TestData.TestData.RandomAlphaNumericString(10)
+                + " " + TestData.TestData.RandomAlphaNumericString(10)
+                + " " + TestData.TestData.RandomAlphaNumericString(10)
+                + " " + TestData.TestData.RandomAlphaNumericString(10),
+                ColorCode = "Pink"
+
+            };
+
+            _sut.Modify(1, expenseInput);
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Payee == expenseInput.Payee)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Amount == expenseInput.Amount)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Account == expenseInput.Account)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Category == expenseInput.Category)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Date == expenseInput.Date)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Repeat == expenseInput.Repeat)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Impulse == expenseInput.Impulse)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Memo == expenseInput.Memo)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.ColorCode == expenseInput.ColorCode)));
+
+        }
+
+        [Test]
+        public void Modified_Expense_Should_Have_Different_ColorCode()
+        {
+            var expenseInput = new ExpenseInputModel()
+            {
+                Id = 1,
+                Payee = TestData.TestData.RandomAlphaNumericString(8),
+                Amount = TestData.TestData.RandomDecimal(),
+                Category = TestData.TestData.RandomCategory(),
+                Account = TestData.TestData.RandomAccount(),
+                Date = DateTime.Today,
+                Repeat = TestData.TestData.RandomBoolean(),
+                Impulse = TestData.TestData.RandomBoolean(),
+                Memo = TestData.TestData.RandomAlphaNumericString(10)
+                + " " + TestData.TestData.RandomAlphaNumericString(10)
+                + " " + TestData.TestData.RandomAlphaNumericString(10)
+                + " " + TestData.TestData.RandomAlphaNumericString(10)
+                + " " + TestData.TestData.RandomAlphaNumericString(10),
+                ColorCode = TestData.TestData.RandomColorCode(),
+
+            };
+
+            _sut.Modify(1, expenseInput);
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Payee == expenseInput.Payee)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Amount == expenseInput.Amount)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Account == expenseInput.Account)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Category == expenseInput.Category)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Date == expenseInput.Date)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Repeat == expenseInput.Repeat)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Impulse == expenseInput.Impulse)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Memo == expenseInput.Memo)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.ColorCode == expenseInput.ColorCode)));
+
+        }
+
+        [Test]
+        public void Modified_Expense_Should_Have_Different_Values()
+        {
+            var expenseInput = new ExpenseInputModel()
+            {
+                Id = 1,
+                Payee = TestData.TestData.RandomAlphaNumericString(8),
+                Amount = TestData.TestData.RandomDecimal(),
+                Category = TestData.TestData.RandomCategory(),
+                Account = TestData.TestData.RandomAccount(),
+                Date = DateTime.Today,
+                Repeat = TestData.TestData.RandomBoolean(),
+                Impulse = TestData.TestData.RandomBoolean(),
+                Memo = TestData.TestData.RandomAlphaNumericString(10)
+                + " " + TestData.TestData.RandomAlphaNumericString(10)
+                + " " + TestData.TestData.RandomAlphaNumericString(10)
+                + " " + TestData.TestData.RandomAlphaNumericString(10)
+                + " " + TestData.TestData.RandomAlphaNumericString(10),
+                ColorCode = TestData.TestData.RandomColorCode(),
+
+            };
+
+            _sut.Modify(1, expenseInput);
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Payee == expenseInput.Payee)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Amount == expenseInput.Amount)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Account == expenseInput.Account)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Category == expenseInput.Category)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Date == expenseInput.Date)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Repeat == expenseInput.Repeat)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Impulse == expenseInput.Impulse)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.Memo == expenseInput.Memo)));
+            _session.Verify(x => x.SaveOrUpdate(It.Is<ExpenseEntity>(y => y.ColorCode == expenseInput.ColorCode)));
+
+        }
     }
 
 
